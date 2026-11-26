@@ -51,8 +51,8 @@ export default function Dock() {
         <a href={FRESHA_URL} target="_blank" rel="noopener" className="is-main">
           Agendar
         </a>
-        <a href={WHATSAPP_URL} target="_blank" rel="noopener">
-          WhatsApp
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener" aria-label="WhatsApp">
+          Whats
         </a>
       </nav>
     </>
