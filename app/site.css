@@ -1,10 +1,14 @@
 /* Gitano Studio v2 · "Bloque" — Archivo expandida 900, botones cuadrados, tres colores. */
 /* Paleta de tres colores: claro (no blanco puro), oscuro (no negro puro) y gris.
    Las líneas son esos mismos colores con transparencia. */
-.va { --bg: #e9e7e2; --ink: #1c1c1c; --grey: #848c98; --accent: #5d5d5d; --line-d: rgba(28,28,28,.16); --line-l: rgba(233,231,226,.16); --soft-l: rgba(233,231,226,.72); --g: clamp(16px, 2.6vw, 40px);
+.va { --bg: #e9e7e2; --ink: #1a1c1f; --grey: #848c98; --accent: #5d5d5d; --line-d: rgba(26,28,31,.16); --line-l: rgba(233,231,226,.16); --soft-l: rgba(233,231,226,.72); --g: clamp(16px, 2.6vw, 40px);
   background: var(--bg); color: var(--ink); font-family: var(--f-sans), system-ui, sans-serif; font-size: 18px; line-height: 1.55; }
 .va h1, .va h2, .va h3, .va-word, .va-giant, .va-author-word, .va-m-phrase, .va-index-name, .va-dock a, .va-dock button, .va-foot-word, .va-svc-name, .va summary {
   font-family: var(--f-archivo), sans-serif; font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.02em; }
+
+/* Sin viudas: ningún párrafo termina con una palabra sola; los títulos se reparten parejo. */
+.va { text-wrap: pretty; }
+.va h2, .va h3, .va summary, .va-lead, .va-panel-name, .va-rev-more, .va-m-sub { text-wrap: balance; }
 
 /* Botonera fija abajo al centro */
 .va-dock { position: fixed; left: 0; right: 0; margin: 0 auto; width: max-content; bottom: 18px; z-index: 50; display: flex; background: var(--ink); border: 2px solid var(--ink); }
@@ -24,7 +28,7 @@
 /* La caja de la foto crece (no se recorta): así en el marco se ve el retrato entero. */
 .va-photo { --t: 30%; --r: 40%; --b: 30%; --l: 40%; position: absolute; top: var(--t); right: var(--r); bottom: var(--b); left: var(--l); z-index: 1; overflow: hidden; }
 .va-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; }
-.va-photo-shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(28,28,28,0) 60%, rgba(28,28,28,.55)); opacity: 0; pointer-events: none; }
+.va-photo-shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(26,28,31,0) 60%, rgba(26,28,31,.55)); opacity: 0; pointer-events: none; }
 .va-frame { position: absolute; left: 50%; top: calc(100svh / 2); transform: translate(-50%, -50%); width: clamp(200px, 21vw, 380px); aspect-ratio: 3 / 4; visibility: hidden; }
 .va-word { position: absolute; left: var(--g); top: 64px; z-index: 2; font-size: clamp(64px, 15vw, 260px); line-height: .8; overflow: hidden; padding-bottom: .04em; }
 .va-word span { display: block; }
@@ -54,7 +58,7 @@
 .va-panel.is-on { flex-grow: 5.2; }
 .va-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transform: scale(1.08); filter: grayscale(1); transition: transform 1.1s cubic-bezier(.2,.7,.2,1), filter .8s ease; }
 .va-panel.is-on img { transform: none; filter: none; }
-.va-panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(28,28,28,0) 55%, rgba(28,28,28,.65)); pointer-events: none; }
+.va-panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,28,31,0) 55%, rgba(26,28,31,.65)); pointer-events: none; }
 .va-panel-hit { position: absolute; inset: 0; z-index: 1; cursor: pointer; }
 .va-panel-tab { position: absolute; z-index: 2; left: 50%; bottom: 22px; transform: translateX(-50%) rotate(180deg); writing-mode: vertical-rl; white-space: nowrap; color: var(--bg); pointer-events: none;
   font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; font-size: 15px; letter-spacing: .02em; transition: opacity .3s; }
@@ -72,7 +76,7 @@
 /* Dayner en negro: la palabra gigante pasa por encima del retrato y, donde lo pisa, lo muestra invertido. */
 .va-author { background: var(--ink); color: var(--bg); padding: 140px var(--g) 130px; overflow: hidden; }
 .va-author-stage { position: relative; display: grid; place-items: center; }
-.va-author-portrait { position: relative; z-index: 1; width: clamp(240px, 26vw, 440px); box-shadow: 0 40px 80px -30px rgba(28,28,28,.8); }
+.va-author-portrait { position: relative; z-index: 1; width: clamp(240px, 26vw, 440px); box-shadow: 0 40px 80px -30px rgba(26,28,31,.8); }
 .va-author-portrait img { width: 100%; aspect-ratio: 620 / 746; object-fit: cover; }
 /* Centrada con left/right + translate (propiedad aparte), así GSAP puede moverla de costado sin pisar el centrado. */
 .va-author-word { position: absolute; left: 0; right: 0; top: 50%; translate: 0 -50%; text-align: center; overflow: visible; clip-path: inset(-50% -100vw 0 -100vw); padding-bottom: .04em; margin: 0; z-index: 2; color: var(--bg); mix-blend-mode: difference;
@@ -101,7 +105,7 @@
 .va-faq { padding: 120px var(--g); background: var(--ink); color: var(--bg); }
 .va-faq-list { margin-top: 40px; border-top: 2px solid var(--bg); }
 .va-faq details { border-bottom: 1px solid var(--line-l); padding: 20px 0; }
-.va-faq summary { list-style: none; cursor: pointer; font-size: clamp(20px, 2.4vw, 38px); line-height: 1; display: flex; justify-content: space-between; gap: 20px; }
+.va-faq summary { list-style: none; cursor: pointer; font-size: clamp(18px, 2.4vw, 38px); line-height: 1; display: flex; justify-content: space-between; gap: 20px; }
 .va-faq summary::-webkit-details-marker { display: none; }
 .va-faq summary { color: var(--accent); transition: color .3s; }
 .va-faq summary h3 { font: inherit; letter-spacing: inherit; margin: 0; }

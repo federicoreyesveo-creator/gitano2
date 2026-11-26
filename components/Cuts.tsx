@@ -38,7 +38,7 @@ export default function Cuts() {
                 </p>
                 <p className="va-panel-line">{c.line}</p>
                 <a href={FRESHA_URL} target="_blank" rel="noopener" tabIndex={open ? 0 : -1}>
-                  Quiero algo así →
+                  Quiero algo&nbsp;así&nbsp;→
                 </a>
               </div>
             </div>

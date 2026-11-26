@@ -65,7 +65,7 @@ export default function Hero() {
         .fromTo(q(".va-photo img"), { scale: 1.12 }, { scale: 1, duration: 1, ease: "none" }, 0)
         .to(q(".va-word-l"), { xPercent: -70, opacity: 0, duration: 0.8, ease: "power2.in" }, 0)
         .to(q(".va-word-r"), { xPercent: 70, opacity: 0, duration: 0.8, ease: "power2.in" }, 0)
-        .to(q(".va-hero-foot"), { color: () => (mobile() ? "#1c1c1c" : "#e9e7e2"), borderColor: () => (mobile() ? "#1c1c1c" : "rgba(233,231,226,.6)"), duration: 0.3 }, 0.6)
+        .to(q(".va-hero-foot"), { color: () => (mobile() ? "#1a1c1f" : "#e9e7e2"), borderColor: () => (mobile() ? "#1a1c1f" : "rgba(233,231,226,.6)"), duration: 0.3 }, 0.6)
         .to(q(".va-photo-shade"), { opacity: () => (mobile() ? 0 : 1), duration: 0.4 }, 0.6)
         .to({}, { duration: 0.25 });
 
@@ -101,7 +101,7 @@ export default function Hero() {
       </p>
       <div className="va-hero-foot">
         <h1>Barbería de autor en Mérida, Yucatán</h1>
-        <a href="#cortes">Mira el trabajo ↓</a>
+        <a href="#cortes">Mira el trabajo&nbsp;↓</a>
       </div>
     </header>
   );

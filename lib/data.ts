@@ -108,7 +108,7 @@ export const CUTS: Cut[] = [
 // Foto de portada a color (el mullet) y fotos del estudio a color.
 export const COVER = { img: obra(2), w: 1200, h: 1600, alt: "Mullet con barba trabajado a tijera y navaja en Gitano Studio, Mérida, Yucatán" };
 export const COLOR = {
-  dayner: { img: "/img/color/dayner-barbero-gitano-studio-merida-bn.webp", w: 960, h: 960, alt: "Retrato de Dayner, barbero y fundador de Gitano Studio" },
+  dayner: { img: "/img/color/dayner-barbero-gitano-studio-merida-retrato.webp", w: 1000, h: 1250, alt: "Retrato de Dayner, barbero y fundador de Gitano Studio" },
   sign: { img: "/img/color/gitano-studio-letrero-fachada-merida-color.webp", w: 618, h: 742, alt: "Dayner colgando el letrero de Gitano Studio en la fachada" },
   studio: { img: "/img/color/gitano-studio-barberia-interior-merida-color.webp", w: 1400, h: 1400, alt: "Interior de Gitano Studio: sillones de barbero y sala de espera en Calle 31, Mérida" },
 };

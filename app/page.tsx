@@ -75,7 +75,7 @@ export default function Home() {
           <div className="va-svc-foot">
             <p>Precios en MXN · Pagas en el estudio · Agenda en línea o por WhatsApp.</p>
             <a className="va-btn" href={FRESHA_URL} target="_blank" rel="noopener">
-              Aparta tu lugar →
+              Aparta tu lugar&nbsp;→
             </a>
           </div>
         </section>
@@ -125,7 +125,7 @@ export default function Home() {
             </dl>
             <div className="va-visit-actions">
               <a className="va-btn" href={FRESHA_URL} target="_blank" rel="noopener">
-                Aparta tu lugar →
+                Aparta tu lugar&nbsp;→
               </a>
               <a className="va-link" href={MAPS_URL} target="_blank" rel="noopener">
                 Cómo llegar <ArrowOut />
