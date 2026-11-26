@@ -3,8 +3,8 @@
 export const FRESHA_URL =
   "https://www.fresha.com/a/gitano-studio-merida-calle-principal-calle-31-circuito-colonias-cogcmbip/booking?menu=true&share=true&pId=3062487";
 export const INSTAGRAM_URL = "https://www.instagram.com/gitano.studio/";
-// TODO: número real de WhatsApp
-export const WHATSAPP_URL = "https://wa.me/520000000000";
+export const PHONE = "999 453 3474";
+export const WHATSAPP_URL = "https://wa.me/529994533474";
 
 export const GEO = { lat: 20.9977016, lng: -89.6062469 };
 export const MAPS_URL = "https://maps.app.goo.gl/CREfbusnP73FAvhz6";
@@ -12,7 +12,7 @@ export const MAPS_EMBED = `https://maps.google.com/maps?q=${GEO.lat},${GEO.lng}&
 
 export const ADDRESS = {
   line1: "Calle 31, Circuito Colonias",
-  line2: "México Oriente, Mérida, Yuc.",
+  line2: "México Oriente, 97125 Mérida, Yuc.",
 };
 
 
@@ -112,3 +112,14 @@ export const COLOR = {
   sign: { img: "/img/color/gitano-studio-letrero-fachada-merida-color.webp", w: 618, h: 742, alt: "Dayner colgando el letrero de Gitano Studio en la fachada" },
   studio: { img: "/img/color/gitano-studio-barberia-interior-merida-color.webp", w: 1400, h: 1400, alt: "Interior de Gitano Studio: sillones de barbero y sala de espera en Calle 31, Mérida" },
 };
+
+// Reseñas de Google (selección; fragmentos textuales de cada reseña). Actualizar a mano cuando lleguen más.
+export const RATING = { score: "5.0", count: 18, url: "https://maps.google.com/?cid=16033076348302109962" };
+export type Review = { text: string; name: string; meta?: string };
+export const REVIEWS: Review[] = [
+  { text: "Tiene el poder de encontrar tu mejor look y guiarte en el mejor corte para ti.", name: "Karel D.", meta: "Cliente desde hace 2 años" },
+  { text: "Si tú lo puedes imaginar, en este estudio te lo pueden hacer realidad.", name: "Geo P." },
+  { text: "Buena opción para chavas que buscamos barbería friendly. Me siento súper cómoda siempre.", name: "Consuelo T." },
+  { text: "Dayner es muy profesional, atento y cuidadoso con cada detalle.", name: "Neutro Apparel" },
+  { text: "Se nota cuando a alguien le gusta lo que hace.", name: "Gabriela M." },
+];

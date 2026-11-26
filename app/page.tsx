@@ -8,6 +8,7 @@ import Manifesto from "@/components/Manifesto";
 import Cuts from "@/components/Cuts";
 import Author from "@/components/Author";
 import Band from "@/components/Band";
+import Reviews from "@/components/Reviews";
 import { ArrowOut } from "@/components/ArrowOut";
 import { ADDRESS, ENTITY, FAQS, FRESHA_URL, HOURS, INSTAGRAM_URL, MAPS_EMBED, MAPS_URL, SERVICES, WHATSAPP_URL } from "@/lib/data";
 import { businessLd, faqLd } from "@/lib/seo";
@@ -42,6 +43,7 @@ export default function Home() {
         <Band />
 
         <Author />
+        <Reviews />
 
         {/* Servicios */}
         <section className="va-services" id="servicios">
@@ -111,7 +113,7 @@ export default function Home() {
               Aquí te esperamos.
             </p>
             <p className="va-addr" data-reveal>
-              Calle 31, Circuito Colonias, México Oriente, Mérida, Yuc.
+              Calle 31, Circuito Colonias, México Oriente, 97125 Mérida, Yuc.
             </p>
             <dl data-reveal>
               {ORDER.map((day) => (

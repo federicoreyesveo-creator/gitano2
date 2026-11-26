@@ -270,3 +270,39 @@
 .va-band-item { display: inline-flex; align-items: center; gap: .7em; padding-right: .7em; white-space: nowrap; font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.01em; font-size: clamp(26px, 3.4vw, 56px); line-height: 1; }
 .va-band-star { width: .55em; height: .55em; flex: none; }
 @media (max-width: 760px) { .va-band { padding: 16px 0; } }
+
+/* Reseñas de Google: fondo claro entre Dayner (negro) y Servicios (gris); tarjetas negras */
+.va-reviews { padding: 96px 0 104px; background: var(--bg); color: var(--ink); overflow: hidden; height: 100vh; min-height: 640px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+.va-rev-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; padding: 0 var(--g); margin-bottom: clamp(24px, 4vh, 44px); }
+.va-reviews .va-h2 { color: var(--accent); }
+.va-rev-score { font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; letter-spacing: -0.04em; font-size: clamp(96px, min(13vw, 24vh), 220px); line-height: .78; margin: 0; }
+.va-rev-meta { max-width: 19em; padding-bottom: 6px; }
+.va-rev-meta p { margin: 12px 0 0; font-size: 16px; line-height: 1.4; color: var(--accent); }
+.va-stars { display: inline-flex; gap: 3px; }
+.va-stars svg { width: 18px; height: 18px; }
+.va-rev-meta .va-stars svg { width: 26px; height: 26px; }
+.va-rev-track { display: flex; gap: 14px; padding: 0 var(--g); flex: 1 1 auto; min-height: 0; }
+.va-rev-card { flex: none; width: min(36vw, 540px); min-height: 0; max-height: 460px; margin: 0; padding: 26px 28px 28px; background: var(--ink); color: var(--bg);
+  display: flex; flex-direction: column; justify-content: space-between; gap: 34px; will-change: transform; }
+.va-rev-no { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; color: var(--grey); }
+.va-rev-card blockquote { margin: 0; font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.02em;
+  font-size: clamp(22px, min(2.2vw, 4.4vh), 40px); line-height: 1; text-wrap: balance; }
+.va-rev-card figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: 14px; }
+.va-rev-card figcaption .va-stars { color: var(--bg); }
+.va-rev-name { font-weight: 600; }
+.va-rev-sub { flex-basis: 100%; color: var(--soft-l); font-size: 13px; }
+.va-rev-card.is-more { background: var(--accent); transition: background .3s; }
+.va-rev-card.is-more:hover { background: var(--ink); }
+.va-rev-card.is-more .va-rev-no { color: var(--bg); font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; font-size: clamp(56px, 6vw, 110px); line-height: .8; letter-spacing: -0.03em; }
+.va-rev-more { font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; font-size: clamp(20px, 1.8vw, 30px); line-height: 1; }
+.va-rev-more .arrow-out { width: .7em; height: .7em; display: inline-block; vertical-align: .05em; }
+@media (max-width: 900px) {
+  .va-reviews { height: auto; min-height: 0; padding: 80px 0 90px; }
+  .va-rev-head { flex-direction: column; align-items: flex-start; gap: 18px; margin-bottom: 32px; }
+  .va-rev-score { font-size: 34vw; }
+  .va-rev-track { overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--g); scrollbar-width: none; overscroll-behavior-x: contain; }
+  .va-rev-track::-webkit-scrollbar { display: none; }
+  .va-rev-card { flex: none; width: 80vw; min-height: 300px; max-height: none; scroll-snap-align: start; padding: 22px; }
+  .va-rev-card blockquote { font-size: 23px; }
+  .va-rev-card:last-child { margin-right: var(--g); }
+}
