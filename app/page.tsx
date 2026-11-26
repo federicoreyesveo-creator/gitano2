@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
 import Cuts from "@/components/Cuts";
 import Author from "@/components/Author";
+import { ArrowOut } from "@/components/ArrowOut";
 import { ADDRESS, ENTITY, FAQS, FRESHA_URL, HOURS, INSTAGRAM_URL, MAPS_EMBED, MAPS_URL, SERVICES, WHATSAPP_URL } from "@/lib/data";
 import { businessLd, faqLd } from "@/lib/seo";
 
@@ -101,14 +102,14 @@ export default function Home() {
         {/* Visita */}
         <section className="va-visit" id="visita">
           <div className="va-visit-info">
-            <h2 className="va-h2" data-reveal>
-              Visita Gitano Studio en la Calle 31, México Oriente
-            </h2>
-            <p className="va-giant" data-reveal aria-hidden>
-              Aquí te esperamos.
+            <p className="va-h2-kicker" data-reveal>
+              Visita · Gitano Studio, Mérida
             </p>
+            <h2 className="va-giant" data-reveal>
+              Calle 31, México Oriente.
+            </h2>
             <p className="va-addr" data-reveal>
-              {ADDRESS.line1}, {ADDRESS.line2} Llegas con cita, sales con oficio.
+              Calle 31, Circuito Colonias, México Oriente, Mérida, Yuc.
             </p>
             <dl data-reveal>
               {ORDER.map((day) => (
@@ -123,13 +124,13 @@ export default function Home() {
                 Aparta tu lugar →
               </a>
               <a className="va-link" href={MAPS_URL} target="_blank" rel="noopener">
-                Cómo llegar ↗
+                Cómo llegar <ArrowOut />
               </a>
               <a className="va-link" href={WHATSAPP_URL} target="_blank" rel="noopener">
-                WhatsApp ↗
+                WhatsApp <ArrowOut />
               </a>
               <a className="va-link" href={INSTAGRAM_URL} target="_blank" rel="noopener">
-                Instagram ↗
+                Instagram <ArrowOut />
               </a>
             </div>
           </div>

@@ -19,7 +19,6 @@ export default function Cuts() {
           <p className="va-cuts-word" aria-hidden>
             Cortes
           </p>
-          <p className="va-cuts-copy">Fades, texturas, rizos y barba. Así se ve el oficio cuando nadie tiene prisa.</p>
         </div>
       </div>
       <div className="va-panels" data-reveal style={{ ["--d" as string]: ".1s" }}>

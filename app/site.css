@@ -256,7 +256,8 @@
 
 /* "Aquí te esperamos." va en media columna (al lado del mapa) */
 .va-visit .va-giant { font-size: clamp(40px, 4.9vw, 100px); line-height: .9; } /* aire: la cola de la Q no toca la S ni la P */
-.va-visit .va-h2 { margin-bottom: 30px; } /* lejos del acento de AQUÍ */
+.va-visit .va-h2-kicker { margin-bottom: 24px; }
 .va-visit-info { min-width: 0; }
 @media (max-width: 900px) { .va-visit .va-giant { font-size: 10.6vw; } }
 @media (min-width: 901px) { .va-faq .va-giant { font-size: clamp(56px, 11vw, 210px); } } /* "PREGUNTAS" entero */
+.arrow-out { display: inline-block; width: .7em; height: .7em; margin-left: .2em; vertical-align: .02em; }
