@@ -56,19 +56,21 @@ export default function Author() {
             </text>
           </svg>
         </figure>
-        <h2 className="va-author-word" aria-label={WORD}>
+        <p className="va-author-word" aria-hidden>
           {WORD.split("").map((c, i) => (
-            <span className="ch" key={i} aria-hidden>
+            <span className="ch" key={i}>
               {c}
             </span>
           ))}
-        </h2>
+        </p>
       </div>
 
       <div className="va-author-cols">
-        <p className="va-lead" data-reveal>
-          Técnica clásica de tijera y navaja, con una lectura actual. Una cabeza a la vez.
-        </p>
+        <div data-reveal>
+          <p className="va-h2-kicker">Barbero · Fundador · Gitano Studio · Mérida</p>
+          <h2 className="va-h2">Dayner, barbero y fundador de Gitano Studio</h2>
+          <p className="va-lead">Técnica clásica, lectura actual.</p>
+        </div>
         <div className="va-author-bio">
           {BIO.map((t, i) => (
             <p key={t.slice(0, 16)} data-reveal style={{ ["--d" as string]: `${0.08 * i}s` }}>

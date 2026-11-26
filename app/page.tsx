@@ -7,42 +7,21 @@ import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
 import Cuts from "@/components/Cuts";
 import Author from "@/components/Author";
-import { ADDRESS, FAQS, FRESHA_URL, GEO, HOURS, INSTAGRAM_URL, MAPS_EMBED, MAPS_URL, SERVICES, WHATSAPP_URL } from "@/lib/data";
+import { ADDRESS, ENTITY, FAQS, FRESHA_URL, HOURS, INSTAGRAM_URL, MAPS_EMBED, MAPS_URL, SERVICES, WHATSAPP_URL } from "@/lib/data";
+import { businessLd, faqLd } from "@/lib/seo";
 
 /*
   Gitano Studio v2 · "Bloque"
   Blanco y negro duro de afiche; el color lo ponen las fotos.
   Titulares en Archivo expandida 900. Botones cuadrados. Botonera fija abajo.
+  SEO: cada sección tiene un H2 descriptivo (chico) y la palabra grande es solo gráfica.
 */
 
 const DAYS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 const ORDER = [2, 3, 4, 5, 6, 0, 1];
 const fmt = (h: number) => `${Math.floor(h)}:${h % 1 ? "30" : "00"}`;
 const d = (s: number) => ({ ["--d" as string]: `${s}s` });
-
-// Datos estructurados: negocio local + preguntas frecuentes (mismo texto que la sección visible).
-const DAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const hhmm = (h: number) => `${String(Math.floor(h)).padStart(2, "0")}:${h % 1 ? "30" : "00"}`;
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BarberShop",
-  name: "Gitano Studio",
-  description: "Barbería de autor en Mérida, Yucatán.",
-  address: { "@type": "PostalAddress", streetAddress: ADDRESS.line1, addressLocality: "Mérida", addressRegion: "Yucatán", addressCountry: "MX" },
-  geo: { "@type": "GeoCoordinates", latitude: GEO.lat, longitude: GEO.lng },
-  hasMap: MAPS_URL,
-  openingHoursSpecification: Object.entries(HOURS)
-    .filter(([, h]) => h)
-    .map(([day, h]) => ({ "@type": "OpeningHoursSpecification", dayOfWeek: DAY[Number(day)], opens: hhmm(h![0]), closes: hhmm(h![1]) })),
-  priceRange: "$80–$650 MXN",
-  founder: { "@type": "Person", name: "Dayner", jobTitle: "Barbero" },
-  sameAs: [INSTAGRAM_URL],
-};
-const faqLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: FAQS.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-};
+const jsonLd = businessLd();
 
 export default function Home() {
   return (
@@ -63,9 +42,15 @@ export default function Home() {
 
         {/* Servicios */}
         <section className="va-services" id="servicios">
-          <h2 className="va-giant" data-reveal>
-            Servicios
+          <h2 className="va-h2" data-reveal>
+            Servicios y precios de barbería en Mérida
           </h2>
+          <p className="va-giant" data-reveal aria-hidden>
+            Hazlo tuyo.
+          </p>
+          <p className="va-sub" data-reveal>
+            Precios claros, en pesos y sin letras chiquitas. Pagas en el estudio.
+          </p>
           {SERVICES.map((g) => (
             <div className="va-svc-group" key={g.title} data-reveal>
               <h3>{g.title}</h3>
@@ -76,24 +61,37 @@ export default function Home() {
                       {s.name}
                       {s.note && <small>{s.note}</small>}
                     </span>
-                    <span className="va-svc-price">${s.price}</span>
+                    <span className="va-svc-price">{s.price === null ? "Incluida" : `$${s.price}`}</span>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-          <p className="va-svc-foot">Precios en MXN · pago en el estudio</p>
+          <div className="va-svc-foot">
+            <p>Precios en MXN · Pagas en el estudio · Agenda en línea por Fresha o por WhatsApp.</p>
+            <a className="va-btn" href={FRESHA_URL} target="_blank" rel="noopener">
+              Aparta tu lugar →
+            </a>
+          </div>
         </section>
 
         {/* Preguntas: las respuestas siempre están en el HTML (SEO y buscadores con IA) */}
         <section className="va-faq" id="preguntas">
-          <h2 className="va-giant" data-reveal>
-            Preguntas
+          <h2 className="va-h2" data-reveal>
+            Preguntas frecuentes sobre Gitano Studio
           </h2>
+          <p className="va-giant" data-reveal aria-hidden>
+            Preguntas
+          </p>
+          <p className="va-sub" data-reveal>
+            Lo que nos preguntan antes de sentarse.
+          </p>
           <div className="va-faq-list">
             {FAQS.map((f, i) => (
               <details key={f.q} open={i === 0} data-reveal style={d(Math.min(i, 5) * 0.05)}>
-                <summary>{f.q}</summary>
+                <summary>
+                  <h3>{f.q}</h3>
+                </summary>
                 <p>{f.a}</p>
               </details>
             ))}
@@ -103,11 +101,14 @@ export default function Home() {
         {/* Visita */}
         <section className="va-visit" id="visita">
           <div className="va-visit-info">
-            <h2 className="va-giant" data-reveal>
-              Aquí
+            <h2 className="va-h2" data-reveal>
+              Visita Gitano Studio en la Calle 31, México Oriente
             </h2>
+            <p className="va-giant" data-reveal aria-hidden>
+              Aquí te esperamos.
+            </p>
             <p className="va-addr" data-reveal>
-              {ADDRESS.line1}, {ADDRESS.line2}
+              {ADDRESS.line1}, {ADDRESS.line2} Llegas con cita, sales con oficio.
             </p>
             <dl data-reveal>
               {ORDER.map((day) => (
@@ -117,9 +118,20 @@ export default function Home() {
                 </div>
               ))}
             </dl>
-            <a className="va-link" href={MAPS_URL} target="_blank" rel="noopener">
-              Cómo llegar →
-            </a>
+            <div className="va-visit-actions">
+              <a className="va-btn" href={FRESHA_URL} target="_blank" rel="noopener">
+                Aparta tu lugar →
+              </a>
+              <a className="va-link" href={MAPS_URL} target="_blank" rel="noopener">
+                Cómo llegar ↗
+              </a>
+              <a className="va-link" href={WHATSAPP_URL} target="_blank" rel="noopener">
+                WhatsApp ↗
+              </a>
+              <a className="va-link" href={INSTAGRAM_URL} target="_blank" rel="noopener">
+                Instagram ↗
+              </a>
+            </div>
           </div>
           <div className="va-map">
             <iframe src={MAPS_EMBED} title="Mapa: Gitano Studio, Calle 31, Mérida" loading="lazy" />
@@ -134,7 +146,9 @@ export default function Home() {
             <p>
               {ADDRESS.line1}
               <br />
-              Mérida, Yucatán
+              {ADDRESS.line2}
+              <br />
+              Mar–Sáb 10:00–19:30 · Dom 12:00–18:00
             </p>
           </div>
           <a className="va-foot-mark" href="#inicio" aria-label="Volver al inicio">
@@ -144,13 +158,13 @@ export default function Home() {
             <p className="va-foot-label">Contacto</p>
             <ul className="va-foot-links">
               <li>
-                <a href={INSTAGRAM_URL} target="_blank" rel="noopener">Instagram</a>
-              </li>
-              <li>
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener">WhatsApp</a>
               </li>
               <li>
-                <a href={FRESHA_URL} target="_blank" rel="noopener">Agendar</a>
+                <a href={INSTAGRAM_URL} target="_blank" rel="noopener">Instagram @gitano.studio</a>
+              </li>
+              <li>
+                <a href={FRESHA_URL} target="_blank" rel="noopener">Aparta tu lugar</a>
               </li>
             </ul>
           </div>
@@ -159,10 +173,13 @@ export default function Home() {
           <span>Gitano</span> <span>Studio</span>
         </p>
         <div className="va-foot-row">
-          <span>Barbería de autor</span>
-          <a href="https://www.almabruta.studio" target="_blank" rel="noopener">
-            Diseñado por Alma Bruta
-          </a>
+          <p className="va-foot-entity">{ENTITY}</p>
+          <p>
+            © 2026 ·{" "}
+            <a href="https://www.almabruta.studio" target="_blank" rel="noopener">
+              Diseñado por Alma Bruta
+            </a>
+          </p>
         </div>
       </footer>
     </div>

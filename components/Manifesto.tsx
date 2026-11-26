@@ -34,7 +34,7 @@ export default function Manifesto() {
   return (
     <section ref={root} className="va-manifesto">
       {/* Tres renglones: "En el espejo" / "no hay suerte." / "Hay oficio." */}
-      <p>
+      <p className="va-m-phrase">
         <span className="va-m-line">
           {w("En el espejo")}
           <img src={CUTS[1].img} alt="" />
@@ -49,6 +49,9 @@ export default function Manifesto() {
           <img src={CUTS[5].img} alt="" />{" "}
           {w("oficio.")}
         </span>
+      </p>
+      <p className="va-m-sub">
+        Fades, tijera y navaja con tiempo para el detalle. Dayner atiende una cabeza a la vez en la Calle 31 de México Oriente. Sin fila, sin prisa, sin cortes de catálogo.
       </p>
     </section>
   );

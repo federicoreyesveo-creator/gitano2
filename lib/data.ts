@@ -16,40 +16,46 @@ export const ADDRESS = {
 };
 
 
-const obra = (n: number) => `/img/obra/gitano-corte-${n}.webp`;
+// Fotos de cortes: nombre de archivo descriptivo (SEO de imágenes).
+const OBRA: Record<number, string> = {"1": "fade-con-textura-barberia-merida", "2": "mullet-con-barba-barberia-merida", "3": "taper-rizado-con-barba-barberia-merida", "4": "high-fade-con-barba-barberia-merida", "5": "crop-texturizado-barberia-merida", "6": "afro-esculpido-corte-mujer-merida"};
+const obra = (n: number) => `/img/obra/${OBRA[n]}.webp`;
 
-export type Service = { id: string; name: string; note?: string; price: number };
+// Frase que define la marca: idéntica en el sitio, Google Business Profile, Fresha e Instagram.
+export const ENTITY = "Gitano Studio es una barbería de autor en Mérida, Yucatán, fundada por el barbero Dayner, en la Calle 31, Circuito Colonias, colonia México Oriente.";
+
+export type Service = { id: string; name: string; note?: string; price: number | null };
 export type ServiceGroup = { title: string; items: Service[] };
 
-// Precios en MXN.
+// Precios en MXN. price: null = incluido.
 export const SERVICES: ServiceGroup[] = [
   {
     title: "Corte",
     items: [
-      { id: "corte", name: "Corte personalizado", note: "Asesoría, técnica y acabado", price: 350 },
-      { id: "tijera", name: "Corte especializado a tijera", note: "Control, textura y estilo", price: 400 },
-      { id: "femenino", name: "Corte corto femenino", note: "Diseño y estilo personalizado", price: 450 },
+      { id: "corte", name: "Corte personalizado", note: "Asesoría, corte y acabado pensados para tu cabeza. Máquina, tijera o las dos.", price: 350 },
+      { id: "tijera", name: "Corte especializado a tijera", note: "Todo a tijera, para quien busca textura, movimiento y un crecimiento que no se ve desaliñado.", price: 400 },
+      { id: "femenino", name: "Corte corto femenino", note: "Cortes cortos de mujer con forma y textura, diseñados para ti y no para la foto de Pinterest.", price: 450 },
     ],
   },
   {
     title: "Barba",
     items: [
-      { id: "barba", name: "Diseño y arreglo de barba", note: "Perfilado, forma y acabado", price: 250 },
-      { id: "ritual", name: "Ritual con toalla caliente", price: 150 },
+      { id: "barba", name: "Diseño y arreglo de barba", note: "Forma, perfilado a navaja y acabado. Tu barba, pero bien hecha.", price: 250 },
+      { id: "ritual", name: "Ritual con toalla caliente", note: "Toalla caliente y navaja para un afeitado al ras y la piel tranquila.", price: 150 },
     ],
   },
   {
     title: "Completos",
     items: [
-      { id: "corte-barba", name: "Corte y barba", note: "Cabello y barba en una cita", price: 500 },
-      { id: "experiencia", name: "Experiencia Gitano", note: "Corte, barba, toalla caliente y facial", price: 650 },
+      { id: "corte-barba", name: "Corte y barba", note: "Cabello y barba en una sola cita. Sales completo.", price: 500 },
+      { id: "experiencia", name: "Experiencia Gitano", note: "Corte, barba, toalla caliente y facial exprés. Para cuando sí te quieres consentir.", price: 650 },
     ],
   },
   {
     title: "Detalles",
     items: [
-      { id: "facial", name: "Tratamiento facial exprés", price: 180 },
-      { id: "cejas", name: "Diseño de cejas", price: 80 },
+      { id: "facial", name: "Tratamiento facial exprés", note: "Un facial rápido para que la piel también salga fresca.", price: 180 },
+      { id: "cejas", name: "Diseño de cejas", note: "Cejas definidas, sin que se note que te las arreglaste.", price: 80 },
+      { id: "asesoria", name: "Asesoría de productos y peinado", note: "Te decimos cómo peinarte en casa y con qué.", price: null },
     ],
   },
 ];
@@ -65,41 +71,44 @@ export const HOURS: Record<number, [number, number] | null> = {
   6: [10, 19.5],
 };
 
-// TODO: bio en borrador; que Dayner confirme datos.
+// TODO: Dayner puede sumar años de oficio, formación y una frase suya.
 export const BIO = [
-  "Dayner es barbero y fundador de Gitano Studio, una barbería de autor en Mérida, Yucatán. Su trabajo une la técnica clásica de tijera y navaja con una lectura de estilo actual: cortes personalizados, corte especializado a tijera, diseño y arreglo de barba y corte corto femenino.",
-  "Cada cita empieza con una asesoría: forma de la cabeza, tipo de cabello, rutina y lo que quieres proyectar. Con eso diseña un corte pensado para ti y te explica cómo peinarlo y qué productos usar en casa.",
-  "El estudio está en la Calle 31, Circuito Colonias, en la colonia México Oriente. Atiende con cita de martes a domingo, y la Experiencia Gitano suma barba, toalla caliente y tratamiento facial al corte.",
+  "Dayner corta con la técnica de siempre, tijera y navaja, y con el ojo de ahora. Antes de tocar una sola hebra platica contigo: forma de la cabeza, tipo de cabello y cuánto tiempo le dedicas al espejo en la mañana (sin juzgar). Luego corta. Y al final te explica cómo peinarte en casa y qué producto sí vale la pena.",
+  "Atiende con cita de martes a domingo en la Calle 31, Circuito Colonias, México Oriente. ¿Quieres todo el ritual? La Experiencia Gitano suma barba, toalla caliente y facial exprés.",
 ];
 
 // Preguntas frecuentes: mismo texto para la sección visible y el schema FAQPage.
-// TODO: que Dayner confirme duración y formas de pago.
+// TODO: que Dayner confirme formas de pago (efectivo, tarjeta, transferencia) y una referencia para llegar.
 export type Faq = { q: string; a: string };
 export const FAQS: Faq[] = [
-  { q: "¿Cuánto cuesta un corte en Gitano Studio?", a: "El corte personalizado cuesta $350 MXN y el corte especializado a tijera, $400 MXN. Corte y barba juntos cuestan $500 MXN, y la Experiencia Gitano completa, $650 MXN. El pago es en el estudio." },
-  { q: "¿Necesito cita o atienden sin cita?", a: "Gitano Studio atiende con cita, para dedicarle a cada cabeza el tiempo que necesita. Puedes reservar en línea por Fresha o escribir por WhatsApp." },
-  { q: "¿Qué horario tienen?", a: "De martes a sábado, de 10:00 a 19:30. Los domingos, de 12:00 a 18:00. Los lunes está cerrado." },
-  { q: "¿Dónde está la barbería?", a: "En la Calle 31, Circuito Colonias, colonia México Oriente, en Mérida, Yucatán." },
-  { q: "¿Hacen cortes de mujer?", a: "Sí. El corte de cabello corto femenino incluye diseño y estilo personalizado y cuesta $450 MXN." },
-  { q: "¿Qué incluye la Experiencia Gitano?", a: "Corte, arreglo de barba, toalla caliente y tratamiento facial, en una sola cita. Cuesta $650 MXN." },
-  { q: "¿Cuánto dura una cita?", a: "Entre 45 y 60 minutos, según el servicio. Cada cita empieza con una asesoría sobre tu tipo de cabello, la forma de tu cabeza y el estilo que buscas." },
+  { q: "¿Cuánto cuesta un corte de cabello en Gitano Studio?", a: "Un corte personalizado en Gitano Studio cuesta $350 MXN y el corte especializado a tijera, $400 MXN. Corte y barba sale en $500 y la Experiencia Gitano completa, en $650. Pagas directo en el estudio." },
+  { q: "¿Necesito cita o atienden sin cita?", a: "Gitano Studio atiende solo con cita, para que cada cliente tenga su tiempo completo, sin esperas. Agenda en línea por Fresha o escríbenos por WhatsApp." },
+  { q: "¿Qué horario tiene Gitano Studio?", a: "Gitano Studio abre de martes a sábado de 10:00 a 19:30 y los domingos de 12:00 a 18:00. Los lunes cerramos." },
+  { q: "¿Dónde está la barbería?", a: "Gitano Studio está en la Calle 31, Circuito Colonias, colonia México Oriente, en Mérida, Yucatán." },
+  { q: "¿Hacen cortes de mujer?", a: "Sí. Gitano Studio hace cortes cortos de mujer desde $450 MXN, como el afro esculpido, con el mismo trabajo de tijera y detalle que cualquier corte de la casa." },
+  { q: "¿Qué incluye la Experiencia Gitano?", a: "La Experiencia Gitano incluye corte, arreglo de barba, toalla caliente y tratamiento facial exprés en una sola cita, por $650 MXN." },
+  { q: "¿Cuánto dura una cita?", a: "Una cita en Gitano Studio dura entre 45 y 60 minutos, según el servicio. Un fade con textura o un crop texturizado toman unos 45 minutos; los servicios con barba, alrededor de una hora." },
+  { q: "¿Hacen fades y degradados?", a: "Sí. El fade con textura, el high fade, el taper y el crop texturizado están entre los cortes que más se trabajan en Gitano Studio. Un corte personalizado con máquina y tijera cuesta $350 MXN." },
+  { q: "¿Qué es una barbería de autor?", a: "Una barbería de autor es un estudio donde el barbero diseña cada corte según tu cabeza, tu tipo de cabello y tu estilo, en lugar de repetir cortes de catálogo. En Gitano Studio cada cita empieza con una asesoría con Dayner." },
+  { q: "¿Cómo agendo una cita?", a: "Agenda en línea por Fresha desde el botón “Aparta tu lugar” o mándanos un WhatsApp. Eliges servicio, día y hora, y ya quedó." },
+  { q: "¿Qué formas de pago aceptan?", a: "El pago se hace en el estudio, al terminar." },
 ];
 
 // Los mismos 6 cortes de la v1, ahora a color y sin numeración.
-export type Cut = { name: string; technique: string; time: string; img: string; alt: string };
+export type Cut = { name: string; technique: string; time: string; line: string; img: string; alt: string };
 export const CUTS: Cut[] = [
-  { name: "Mullet + barba", technique: "Tijera y navaja", time: "60 min", img: obra(2), alt: "Mullet con barba perfilada, Gitano Studio Mérida" },
-  { name: "Fade con textura", technique: "Máquina y tijera", time: "45 min", img: obra(1), alt: "Fade con textura corta, corte de Gitano Studio en Mérida" },
-  { name: "Taper rizado", technique: "Rizo natural y barba", time: "60 min", img: obra(3), alt: "Taper con rizo natural y barba, barbería Gitano Studio" },
-  { name: "High fade + barba", technique: "Perfilado a navaja", time: "60 min", img: obra(4), alt: "High fade con barba larga perfilada a navaja, Gitano Studio" },
-  { name: "Crop texturizado", technique: "Fade y textura arriba", time: "45 min", img: obra(5), alt: "Crop texturizado con fade, corte de autor en Mérida" },
-  { name: "Afro esculpido", technique: "Tijera, corte de mujer", time: "60 min", img: obra(6), alt: "Afro esculpido, corte femenino en Gitano Studio Mérida" },
+  { name: "Mullet + barba", technique: "Tijera + navaja", time: "60 min", line: "Corto adelante, actitud atrás. Con la barba a juego.", img: obra(2), alt: "Mullet con barba trabajado a tijera y navaja en Gitano Studio, Mérida, Yucatán" },
+  { name: "Fade con textura", technique: "Máquina + tijera", time: "45 min", line: "Degradado limpio abajo, movimiento arriba. El que nunca falla.", img: obra(1), alt: "Fade con textura hecho con máquina y tijera en Gitano Studio, barbería en Mérida" },
+  { name: "Taper rizado", technique: "Rizo natural + barba", time: "60 min", line: "Tu rizo se respeta: laterales limpios y la forma natural intacta.", img: obra(3), alt: "Taper en cabello rizado natural con barba, Gitano Studio Mérida" },
+  { name: "High fade + barba", technique: "Perfilado a navaja", time: "60 min", line: "Fade alto y barba marcada a navaja. Líneas que se notan desde la otra banqueta.", img: obra(4), alt: "High fade con barba perfilada a navaja en una barbería de Mérida" },
+  { name: "Crop texturizado", technique: "Fade + textura arriba", time: "45 min", line: "Corto, con textura y casi cero mantenimiento. Te levantas y ya quedó.", img: obra(5), alt: "Crop texturizado con fade, corte de hombre en Gitano Studio" },
+  { name: "Afro esculpido", technique: "Tijera · corte de mujer", time: "60 min", line: "Volumen con forma. Corte corto de mujer trabajado a tijera, mechón por mechón.", img: obra(6), alt: "Afro esculpido, corte corto de mujer a tijera en Gitano Studio, Mérida" },
 ];
 
 // Foto de portada a color (el mullet) y fotos del estudio a color.
-export const COVER = { img: obra(2), w: 1200, h: 1600, alt: "Cliente con mullet y barba recién cortados en Gitano Studio, barbería en Mérida" };
+export const COVER = { img: obra(2), w: 1200, h: 1600, alt: "Mullet con barba trabajado a tijera y navaja en Gitano Studio, Mérida, Yucatán" };
 export const COLOR = {
-  dayner: { img: "/img/color/dayner-barbero-gitano-studio-merida-bn.webp", w: 960, h: 960, alt: "Dayner, barbero y fundador de Gitano Studio en Mérida, Yucatán" },
+  dayner: { img: "/img/color/dayner-barbero-gitano-studio-merida-bn.webp", w: 960, h: 960, alt: "Retrato de Dayner, barbero y fundador de Gitano Studio" },
   sign: { img: "/img/color/gitano-studio-letrero-fachada-merida-color.webp", w: 618, h: 742, alt: "Dayner colgando el letrero de Gitano Studio en la fachada" },
   studio: { img: "/img/color/gitano-studio-barberia-interior-merida-color.webp", w: 1400, h: 1400, alt: "Interior de Gitano Studio: sillones de barbero y sala de espera en Calle 31, Mérida" },
 };

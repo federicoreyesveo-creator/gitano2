@@ -9,9 +9,16 @@ const mono = Geist_Mono({ subsets: ["latin"], variable: "--f-mono" });
 const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--f-archivo" });
 
 export const metadata: Metadata = {
-  title: "Gitano Studio · Barbería de autor en Mérida, Yucatán",
+  title: "Barbería en Mérida | Gitano Studio · Cortes de autor",
   description:
-    "Barbería de autor en Mérida, Yucatán. Dayner y Gitano Studio: corte personalizado, corte a tijera, barba, corte corto femenino y la Experiencia Gitano. Calle 31, Circuito Colonias. Agenda en línea.",
+    "Barbería de autor en Mérida. Fades, corte a tijera, barba con toalla caliente y cortes cortos de mujer con Dayner. México Oriente. Agenda en línea.",
+  openGraph: {
+    title: "Gitano Studio · No hay suerte. Hay oficio.",
+    description: "Barbería de autor en Mérida, Yucatán. Una cabeza a la vez, con cita.",
+    locale: "es_MX",
+    type: "website",
+    siteName: "Gitano Studio",
+  },
 };
 
 export const viewport: Viewport = {

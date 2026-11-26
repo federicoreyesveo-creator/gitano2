@@ -100,10 +100,8 @@ export default function Hero() {
         <span>Studio</span>
       </p>
       <div className="va-hero-foot">
-        <h1>
-          <span className="sr-only">Gitano Studio · </span>Barbería de autor en Mérida, Yucatán
-        </h1>
-        <span>Baja ↓</span>
+        <h1>Barbería de autor en Mérida, Yucatán</h1>
+        <a href="#cortes">Mira el trabajo ↓</a>
       </div>
     </header>
   );

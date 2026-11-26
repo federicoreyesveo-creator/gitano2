@@ -14,8 +14,16 @@ export default function Cuts() {
   return (
     <section className="va-cuts" id="cortes">
       <div className="va-cuts-head" data-reveal>
-        <h2>Cortes</h2>
-        <p>Elige una foto para abrirla.</p>
+        <div>
+          <h2 className="va-h2">Cortes de autor en Mérida</h2>
+          <p className="va-cuts-word" aria-hidden>
+            Cortes
+          </p>
+        </div>
+        <div className="va-cuts-copy">
+          <p>Fades, texturas, rizos y barba. Así se ve el oficio cuando nadie tiene prisa.</p>
+          <p>Toca un corte para verlo de cerca. Si alguno te late, tráelo de referencia: Dayner lo lleva a tu cabeza.</p>
+        </div>
       </div>
       <div className="va-panels" data-reveal style={{ ["--d" as string]: ".1s" }}>
         {CUTS.map((c, i) => {
@@ -28,12 +36,13 @@ export default function Cuts() {
                 {c.name}
               </span>
               <div className="va-panel-info" aria-hidden={!open}>
-                <p className="va-panel-name">{c.name}</p>
+                <h3 className="va-panel-name">{c.name}</h3>
                 <p className="va-panel-meta">
                   {c.technique} · {c.time}
                 </p>
+                <p className="va-panel-line">{c.line}</p>
                 <a href={FRESHA_URL} target="_blank" rel="noopener" tabIndex={open ? 0 : -1}>
-                  Quiero este corte →
+                  Quiero algo así →
                 </a>
               </div>
             </div>

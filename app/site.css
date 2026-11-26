@@ -3,7 +3,7 @@
    Las líneas son esos mismos colores con transparencia. */
 .va { --bg: #e9e7e2; --ink: #1c1c1c; --grey: #848c98; --accent: #5d5d5d; --line-d: rgba(28,28,28,.16); --line-l: rgba(233,231,226,.16); --soft-l: rgba(233,231,226,.72); --g: clamp(16px, 2.6vw, 40px);
   background: var(--bg); color: var(--ink); font-family: var(--f-sans), system-ui, sans-serif; font-size: 18px; line-height: 1.55; }
-.va h1, .va h2, .va h3, .va-word, .va-manifesto p, .va-index-name, .va-dock a, .va-dock button, .va-foot-word, .va-svc-name, .va summary {
+.va h1, .va h2, .va h3, .va-word, .va-giant, .va-author-word, .va-m-phrase, .va-index-name, .va-dock a, .va-dock button, .va-foot-word, .va-svc-name, .va summary {
   font-family: var(--f-archivo), sans-serif; font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.02em; }
 
 /* Botonera fija abajo al centro */
@@ -31,13 +31,13 @@
 .va-word-r { left: auto; right: var(--g); top: calc(100svh - 84px); transform: translateY(-100%); }
 .va-hero-foot { position: absolute; z-index: 2; left: var(--g); right: var(--g); top: calc(100svh - 52px); display: flex; justify-content: space-between; align-items: end; border-top: 2px solid var(--ink); padding-top: 12px; }
 .va-hero-foot h1 { font-size: 14px; letter-spacing: .02em; }
-.va-hero-foot span { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; }
+.va-hero-foot a { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; }
 
 /* Manifiesto */
-.va-manifesto { min-height: 100svh; display: flex; align-items: center; justify-content: center; padding: 140px var(--g); background: var(--ink); color: var(--bg); text-align: center; }
-.va-manifesto p { margin: 0 auto; }
+.va-manifesto { min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 140px var(--g); background: var(--ink); color: var(--bg); text-align: center; }
+.va-m-phrase { margin: 0 auto; }
 .va-m-line { display: block; white-space: nowrap; }
-.va-manifesto p { font-size: clamp(40px, 6.6vw, 124px); line-height: .92; }
+.va-m-phrase { font-size: clamp(40px, 6.6vw, 124px); line-height: .92; }
 .va-manifesto img { display: inline-block; height: .78em; width: 1.25em; object-fit: cover; vertical-align: -.06em; border-radius: 0; margin: 0 .05em; }
 .va-m-w { display: inline; }
 .va-m-w.is-key { color: var(--accent); }
@@ -45,8 +45,9 @@
 /* Cortes */
 .va-cuts { padding: 120px var(--g) 140px; }
 .va-cuts-head { display: flex; justify-content: space-between; align-items: end; border-bottom: 2px solid var(--ink); padding-bottom: 14px; }
-.va-cuts-head h2 { font-size: clamp(48px, 8vw, 140px); line-height: .8; }
-.va-cuts-head p { color: var(--grey); font-size: 15px; }
+.va-cuts-word { font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.02em; font-size: clamp(48px, 8vw, 140px); line-height: .8; margin: 10px 0 0; }
+.va-cuts-copy { max-width: 30em; display: grid; gap: 8px; font-size: 15px; }
+.va-cuts-copy p:last-child { color: var(--grey); }
 /* Paneles: seis tiras verticales; la abierta crece (flex) y muestra su ficha. */
 .va-panels { display: flex; gap: 8px; height: min(74svh, 760px); margin-top: 26px; }
 .va-panel { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; background: var(--accent); transition: flex-grow .8s cubic-bezier(.7,0,.2,1); }
@@ -63,6 +64,7 @@
 .va-panel.is-on .va-panel-info { opacity: 1; transform: none; transition-delay: .35s; pointer-events: auto; }
 .va-panel-name { flex-basis: 100%; font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.02em; font-size: clamp(28px, 3.4vw, 60px); line-height: .9; }
 .va-panel-meta { font-size: 15px; opacity: .85; }
+.va-panel-line { flex-basis: 100%; max-width: 34em; font-size: 15px; line-height: 1.4; }
 .va-panel-info a { margin-left: auto; font-weight: 700; font-size: 15px; border-bottom: 2px solid var(--bg); }
 
 /* Dayner */
@@ -102,6 +104,7 @@
 .va-faq summary { list-style: none; cursor: pointer; font-size: clamp(20px, 2.4vw, 38px); line-height: 1; display: flex; justify-content: space-between; gap: 20px; }
 .va-faq summary::-webkit-details-marker { display: none; }
 .va-faq summary { color: var(--accent); transition: color .3s; }
+.va-faq summary h3 { font: inherit; letter-spacing: inherit; margin: 0; }
 .va-faq summary:hover, .va-faq details[open] summary { color: var(--bg); }
 .va-faq summary::after { content: "+"; }
 .va-faq details[open] summary::after { content: "–"; }
@@ -146,7 +149,8 @@
   .va-author-cols { margin-top: 56px; }
   /* Menos aire entre secciones */
   .va-manifesto { padding: 100px var(--g); min-height: 0; } /* banda corta, con aire parejo arriba y abajo */
-  .va-manifesto p { font-size: 6.9vw; line-height: 1.02; }
+  .va-m-phrase { font-size: 6.9vw; line-height: 1.02; }
+  .va-m-sub { font-size: 14px; margin-top: 22px; }
   .va-cuts { padding: 64px var(--g) 72px; }
   .va-services, .va-faq, .va-visit-info { padding: 64px var(--g); }
   /* Paneles en celular: tiras horizontales apiladas; la abierta crece hacia abajo */
@@ -154,7 +158,7 @@
   .va-panel { flex: none; height: 62px; transition: height .7s cubic-bezier(.7,0,.2,1); }
   .va-panel.is-on { height: 64svh; }
   .va-panel-tab { writing-mode: horizontal-tb; transform: none; left: 16px; bottom: 50%; translate: 0 50%; }
-  .va-giant, .va-menu nav a { font-size: 11.4vw; } /* "PREGUNTAS" entra justo en el ancho */
+  .va-giant, .va-menu nav a { font-size: 10.8vw; } /* "PREGUNTAS" entra justo en el ancho */
   .va-map { border-left: 0; border-top: 2px solid var(--ink); min-height: 360px; }
   .va-dock a, .va-dock button { padding: 14px 16px; font-size: 13px; }
 }
@@ -228,3 +232,31 @@
   .va-foot-word span { display: block; }
   .va-foot-row { flex-direction: column; align-items: center; gap: 6px; text-align: center; }
 }
+
+/* Textos SEO: H2 descriptivo chico sobre la palabra grande (que es solo gráfica) */
+.va-h2 { font-family: var(--f-sans) !important; font-weight: 600 !important; font-stretch: 100% !important; text-transform: none !important; letter-spacing: 0 !important; font-size: 15px; line-height: 1.3; margin: 0 0 14px; }
+.va-h2-kicker { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); margin-bottom: 10px; }
+.va-author .va-h2 { color: var(--soft-l); margin-bottom: 18px; }
+.va-faq .va-h2, .va-services .va-h2 { color: var(--soft-l); }
+.va-sub { max-width: 34em; margin: 18px 0 0; font-size: 16px; line-height: 1.45; }
+.va-faq .va-sub, .va-services .va-sub { color: var(--soft-l); }
+.va-m-sub { max-width: 36em; margin: 34px auto 0; font-size: 16px; line-height: 1.5; color: var(--soft-l); }
+.va-btn { display: inline-flex; align-items: center; padding: 14px 20px; background: var(--ink); color: var(--bg); font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; font-size: 14px; letter-spacing: .02em; transition: background .25s, color .25s; }
+.va-btn:hover { background: var(--accent); }
+.va-services .va-btn { background: var(--bg); color: var(--ink); }
+.va-services .va-btn:hover { background: var(--ink); color: var(--bg); }
+.va-svc-foot { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
+.va-svc-foot p { margin: 0; }
+.va-visit-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 26px; }
+.va-visit-actions .va-link { margin-top: 0; }
+.va-foot-entity { max-width: 46em; margin: 0; }
+.va-foot-row p { margin: 0; }
+@media (max-width: 760px) {
+  .va-foot-row { text-align: center; }
+}
+
+/* "Aquí te esperamos." va en media columna (al lado del mapa) */
+.va-visit .va-giant { font-size: clamp(40px, 4.9vw, 100px); }
+.va-visit-info { min-width: 0; }
+@media (max-width: 900px) { .va-visit .va-giant { font-size: 10.6vw; } }
+@media (min-width: 901px) { .va-faq .va-giant { font-size: clamp(56px, 11vw, 210px); } } /* "PREGUNTAS" entero */
