@@ -199,16 +199,17 @@
 .va-loader-in { display: grid; justify-items: center; gap: 28px; }
 .va-loader-face { width: clamp(120px, 13vw, 180px); animation: va-face-nod 1.3s 2.1s ease-in-out infinite; transform-origin: 50% 85%; }
 .va-loader-face svg { display: block; width: 100%; height: auto; overflow: visible; }
-.va-loader-face mask path { fill: none; stroke: #fff; stroke-width: 36; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1; stroke-dashoffset: 1; animation: va-pen .55s cubic-bezier(.45,0,.25,1) forwards; }
-.va-loader-full { opacity: 0; animation: va-fade .3s 1.9s forwards; } /* asegura el dibujo completo al final */
+.va-loader-face mask path { fill: none; stroke: #fff; stroke-width: 36; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1; stroke-dashoffset: 1; opacity: 0; animation: va-pen .3s linear forwards; }
+/* opacity 0 hasta su turno: si no, la punta redonda de cada trazo asoma como un puntito antes de tiempo */
+.va-loader-full { opacity: 0; animation: va-fade .25s 2.05s forwards; } /* asegura el dibujo completo al final */
 .va-loader-bar { width: clamp(120px, 12vw, 170px); height: 2px; background: var(--line-l); overflow: hidden; }
 .va-loader-bar i { display: block; height: 100%; width: 100%; background: var(--bg); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); transition: transform .35s ease; }
 .va-loader-word { font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: .02em; font-size: 12px; color: var(--grey); }
-@keyframes va-pen { to { stroke-dashoffset: 0; } }
+@keyframes va-pen { from { opacity: 1; } to { stroke-dashoffset: 0; opacity: 1; } }
 @keyframes va-fade { to { opacity: 1; } }
 @keyframes va-face-nod { 0%, 100% { rotate: 0deg; } 30% { rotate: -7deg; } 60% { rotate: 5deg; } }
 @keyframes va-loader-safety { to { opacity: 0; visibility: hidden; } }
-@media (prefers-reduced-motion: reduce) { .va-loader-face, .va-loader-face mask path { animation: none; stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .va-loader-face, .va-loader-face mask path { animation: none; stroke-dashoffset: 0; opacity: 1; } }
 
 /* Pie: dos columnas de datos con la carita al medio, la firma "Gitano Studio" a todo el ancho y una línea final */
 .va-foot { background: var(--ink); color: var(--bg); padding: 90px var(--g) 96px; overflow: hidden; }
@@ -272,7 +273,7 @@
 @media (max-width: 760px) { .va-band { padding: 16px 0; } }
 
 /* Reseñas de Google: fondo claro entre Dayner (negro) y Servicios (gris); tarjetas negras */
-.va-reviews { padding: 96px 0 104px; background: var(--bg); color: var(--ink); overflow: hidden; height: 100vh; min-height: 640px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+.va-reviews { padding: 92px 0 96px; background: var(--bg); color: var(--ink); overflow: hidden; height: 100vh; min-height: 640px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
 .va-rev-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; padding: 0 var(--g); margin-bottom: clamp(24px, 4vh, 44px); }
 .va-reviews .va-h2 { color: var(--accent); }
 .va-rev-score { font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; letter-spacing: -0.04em; font-size: clamp(96px, min(13vw, 24vh), 220px); line-height: .78; margin: 0; }
@@ -282,7 +283,7 @@
 .va-stars svg { width: 18px; height: 18px; }
 .va-rev-meta .va-stars svg { width: 26px; height: 26px; }
 .va-rev-track { display: flex; gap: 14px; padding: 0 var(--g); flex: 1 1 auto; min-height: 0; }
-.va-rev-card { flex: none; width: min(36vw, 540px); min-height: 0; max-height: 460px; margin: 0; padding: 26px 28px 28px; background: var(--ink); color: var(--bg);
+.va-rev-card { flex: none; width: min(29vw, 460px); min-height: 0; margin: 0; padding: 26px 28px 28px; background: var(--ink); color: var(--bg);
   display: flex; flex-direction: column; justify-content: space-between; gap: 34px; will-change: transform; }
 .va-rev-no { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; color: var(--grey); }
 .va-rev-card blockquote { margin: 0; font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.02em;
@@ -302,7 +303,7 @@
   .va-rev-score { font-size: 34vw; }
   .va-rev-track { overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--g); scrollbar-width: none; overscroll-behavior-x: contain; }
   .va-rev-track::-webkit-scrollbar { display: none; }
-  .va-rev-card { flex: none; width: 80vw; min-height: 300px; max-height: none; scroll-snap-align: start; padding: 22px; }
+  .va-rev-card { flex: none; width: 76vw; min-height: 420px; max-height: none; scroll-snap-align: start; padding: 22px; }
   .va-rev-card blockquote { font-size: 23px; }
   .va-rev-card:last-child { margin-right: var(--g); }
 }

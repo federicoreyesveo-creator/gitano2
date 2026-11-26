@@ -85,7 +85,7 @@ export default function Reviews() {
         <a className="va-rev-card is-more" href={RATING.url} target="_blank" rel="noopener">
           <span className="va-rev-no">+{RATING.count - REVIEWS.length}</span>
           <span className="va-rev-more">
-            Lee las {RATING.count} reseñas en Google <ArrowOut />
+            Lee todas las reseñas en Google <ArrowOut />
           </span>
         </a>
       </div>
