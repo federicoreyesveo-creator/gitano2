@@ -23,7 +23,7 @@ export default function Manifesto() {
   }, []);
 
   // Las palabras clave van en el color de acento.
-  const KEY = ["espejo", "suerte", "oficio"];
+  const KEY = ["tuyo", "estilo"];
   const w = (t: string) =>
     t.split(" ").map((x, i) => (
       <span key={x + i} className={`va-m-w ${KEY.includes(x.replace(/[.,]/g, "").toLowerCase()) ? "is-key" : ""}`}>
@@ -33,25 +33,24 @@ export default function Manifesto() {
 
   return (
     <section ref={root} className="va-manifesto">
-      {/* Tres renglones: "En el espejo" / "no hay suerte." / "Hay oficio." */}
+      {/* El eslogan de la marca en tres renglones: "Haz" / "tuyo" / "tu estilo." */}
       <p className="va-m-phrase">
         <span className="va-m-line">
-          {w("En el espejo")}
+          {w("Haz")}
           <img src={CUTS[1].img} alt="" />
         </span>{" "}
         <span className="va-m-line">
-          {w("No hay")}
           <img src={CUTS[3].img} alt="" />{" "}
-          {w("suerte.")}
+          {w("tuyo")}
         </span>{" "}
         <span className="va-m-line">
-          {w("Hay")}
+          {w("tu")}
           <img src={CUTS[5].img} alt="" />{" "}
-          {w("oficio.")}
+          {w("estilo.")}
         </span>
       </p>
       <p className="va-m-sub">
-        Fades, tijera y navaja con tiempo para el detalle. Dayner atiende una cabeza a la vez en la Calle 31 de México Oriente. Sin fila, sin prisa, sin cortes de catálogo.
+        Fades, tijera y navaja con tiempo para el detalle. En Gitano atendemos una cabeza a la vez en la Calle 31 de México Oriente. Sin fila, sin prisa, sin cortes de catálogo.
       </p>
     </section>
   );

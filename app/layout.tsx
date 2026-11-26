@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Barbería de autor en Mérida. Fades, corte a tijera, barba con toalla caliente y cortes cortos de mujer con Dayner. México Oriente. Agenda en línea.",
   openGraph: {
-    title: "Gitano Studio · No hay suerte. Hay oficio.",
+    title: "Gitano Studio · Haz tuyo tu estilo.",
     description: "Barbería de autor en Mérida, Yucatán. Una cabeza a la vez, con cita.",
     locale: "es_MX",
     type: "website",
