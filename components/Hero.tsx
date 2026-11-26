@@ -51,10 +51,11 @@ export default function Hero() {
       const mobile = () => window.matchMedia("(max-width: 900px)").matches;
       const endBox = () => {
         if (!mobile()) return { t: 0, b: 0 };
+        // De arriba (deja lugar al logo) hasta justo encima del pie de portada: un retrato ~2:3, sin huecos.
         const h = el.getBoundingClientRect().height;
-        const boxH = Math.min(el.clientWidth * 1.25, window.innerHeight * 0.66);
-        const cy = window.innerHeight / 2 - 40;
-        return { t: ((cy - boxH / 2) / h) * 100, b: ((h - cy - boxH / 2) / h) * 100 };
+        const foot = (q(".va-hero-foot")[0] as HTMLElement).offsetTop;
+        const top = Math.max(56, foot - 16 - el.clientWidth * 1.6);
+        return { t: (top / h) * 100, b: ((h - (foot - 16)) / h) * 100 };
       };
       const open = { "--t": () => `${endBox().t}%`, "--r": "0%", "--b": () => `${endBox().b}%`, "--l": "0%" };
       const tl = gsap.timeline({

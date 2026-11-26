@@ -126,6 +126,7 @@
 
 @media (max-width: 900px) {
   /* Portada en celular: todo junto al centro. GITANO pisa el borde de arriba del retrato y STUDIO el de abajo. */
+  .va-hero { height: calc(100svh - 56px); min-height: 520px; } /* sin franja vacía debajo del pie de portada */
   .va-hero { --fw: min(72vw, 40svh); --fh: calc(var(--fw) * 1.25); --cy: calc(50svh - 40px); --ws: min(19vw, 12svh); }
   .va-frame { width: var(--fw); aspect-ratio: 4 / 5; top: var(--cy); }
   .va-word { font-size: var(--ws); top: calc(var(--cy) - var(--fh) / 2 - var(--ws) * .55); }
@@ -144,7 +145,7 @@
   .va-badge { right: -26px; top: auto; bottom: -26px; width: 92px; }
   .va-author-cols { margin-top: 56px; }
   /* Menos aire entre secciones */
-  .va-manifesto { padding: 24px var(--g); min-height: 0; aspect-ratio: 16 / 9; } /* misma proporción que en escritorio */
+  .va-manifesto { padding: 100px var(--g); min-height: 0; } /* banda corta, con aire parejo arriba y abajo */
   .va-manifesto p { font-size: 6.9vw; line-height: 1.02; }
   .va-cuts { padding: 64px var(--g) 72px; }
   .va-services, .va-faq, .va-visit-info { padding: 64px var(--g); }
