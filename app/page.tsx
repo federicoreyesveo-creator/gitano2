@@ -69,7 +69,7 @@ export default function Home() {
             </div>
           ))}
           <div className="va-svc-foot">
-            <p>Precios en MXN · Pagas en el estudio · Agenda en línea por Fresha o por WhatsApp.</p>
+            <p>Precios en MXN · Pagas en el estudio · Agenda en línea o por WhatsApp.</p>
             <a className="va-btn" href={FRESHA_URL} target="_blank" rel="noopener">
               Aparta tu lugar →
             </a>
@@ -102,12 +102,12 @@ export default function Home() {
         {/* Visita */}
         <section className="va-visit" id="visita">
           <div className="va-visit-info">
-            <p className="va-h2-kicker" data-reveal>
+            <h2 className="va-h2" data-reveal>
               Visita · Gitano Studio, Mérida
-            </p>
-            <h2 className="va-giant" data-reveal>
-              Calle 31, México Oriente.
             </h2>
+            <p className="va-giant" data-reveal aria-hidden>
+              Aquí te esperamos.
+            </p>
             <p className="va-addr" data-reveal>
               Calle 31, Circuito Colonias, México Oriente, Mérida, Yuc.
             </p>
