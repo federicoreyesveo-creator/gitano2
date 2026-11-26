@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
 import Cuts from "@/components/Cuts";
 import Author from "@/components/Author";
+import Band from "@/components/Band";
 import { ArrowOut } from "@/components/ArrowOut";
 import { ADDRESS, ENTITY, FAQS, FRESHA_URL, HOURS, INSTAGRAM_URL, MAPS_EMBED, MAPS_URL, SERVICES, WHATSAPP_URL } from "@/lib/data";
 import { businessLd, faqLd } from "@/lib/seo";
@@ -38,6 +39,7 @@ export default function Home() {
         <Hero />
         <Manifesto />
         <Cuts />
+        <Band />
 
         <Author />
 

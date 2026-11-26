@@ -262,3 +262,11 @@
 @media (max-width: 900px) { .va-visit .va-giant { font-size: 10.6vw; } }
 @media (min-width: 901px) { .va-faq .va-giant { font-size: clamp(56px, 11vw, 210px); } } /* "PREGUNTAS" entero */
 .arrow-out { display: inline-block; width: .7em; height: .7em; margin-left: .2em; vertical-align: .02em; }
+
+/* Banda que corre entre Cortes y Dayner */
+.va-band { background: var(--accent); color: var(--bg); overflow: hidden; padding: 22px 0; border-block: 2px solid var(--ink); }
+.va-band-track { display: flex; width: max-content; will-change: transform; }
+.va-band-group { display: flex; flex: none; }
+.va-band-item { display: inline-flex; align-items: center; gap: .7em; padding-right: .7em; white-space: nowrap; font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.01em; font-size: clamp(26px, 3.4vw, 56px); line-height: 1; }
+.va-band-star { width: .55em; height: .55em; flex: none; }
+@media (max-width: 760px) { .va-band { padding: 16px 0; } }
