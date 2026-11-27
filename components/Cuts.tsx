@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CUTS, FRESHA_URL } from "@/lib/data";
+import { CUTS, FRESHA_URL, OBRA_H, OBRA_W, srcSet } from "@/lib/data";
 
 /**
  * Cortes como paneles: las seis fotos en fila, como tiras verticales que ocupan todo el ancho.
@@ -26,7 +26,7 @@ export default function Cuts() {
           const open = i === on;
           return (
             <div key={c.name} className={`va-panel ${open ? "is-on" : ""}`} onMouseEnter={() => setOn(i)}>
-              <img src={c.img} alt={c.alt} width={1200} height={1600} />
+              <img src={c.img} srcSet={srcSet(c.img, OBRA_W)} sizes="(max-width: 900px) 100vw, 45vw" alt={c.alt} width={OBRA_W} height={OBRA_H} style={c.pos ? { objectPosition: c.pos } : undefined} />
               <button type="button" className="va-panel-hit" aria-expanded={open} aria-label={c.name} onClick={() => setOn(i)} onFocus={() => setOn(i)} />
               <span className="va-panel-tab" aria-hidden>
                 {c.name}

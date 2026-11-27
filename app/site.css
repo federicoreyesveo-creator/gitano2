@@ -53,10 +53,10 @@
 .va-cuts-word { font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.02em; font-size: clamp(48px, 8vw, 140px); line-height: .8; margin: 10px 0 0; }
 .va-cuts-copy { max-width: 34em; margin: 16px 0 0; font-size: 16px; line-height: 1.45; }
 /* Paneles: seis tiras verticales; la abierta crece (flex) y muestra su ficha. */
-.va-panels { display: flex; gap: 8px; height: min(74svh, 760px); margin-top: 26px; }
+.va-panels { display: flex; gap: 8px; height: min(88svh, 940px); margin-top: 26px; } /* alto: el abierto queda cerca del 3:4 de la foto */
 .va-panel { position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; background: var(--accent); transition: flex-grow .8s cubic-bezier(.7,0,.2,1); }
-.va-panel.is-on { flex-grow: 5.2; }
-.va-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transform: scale(1.08); filter: grayscale(1); transition: transform 1.1s cubic-bezier(.2,.7,.2,1), filter .8s ease; }
+.va-panel.is-on { flex-grow: 4.2; }
+.va-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transform: scale(1.03); filter: grayscale(1); transition: transform 1.1s cubic-bezier(.2,.7,.2,1), filter .8s ease; }
 .va-panel.is-on img { transform: none; filter: none; }
 .va-panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,28,31,0) 55%, rgba(26,28,31,.65)); pointer-events: none; }
 .va-panel-hit { position: absolute; inset: 0; z-index: 1; cursor: pointer; }
@@ -160,7 +160,7 @@
   /* Paneles en celular: tiras horizontales apiladas; la abierta crece hacia abajo */
   .va-panels { flex-direction: column; height: auto; }
   .va-panel { flex: none; height: 62px; transition: height .7s cubic-bezier(.7,0,.2,1); }
-  .va-panel.is-on { height: 64svh; }
+  .va-panel.is-on { height: min(calc((100vw - 2 * var(--g)) * 1.25), 80svh); } /* 4:5, casi la foto entera */
   .va-panel-tab { writing-mode: horizontal-tb; transform: none; left: 16px; bottom: 50%; translate: 0 50%; }
   .va-giant, .va-menu nav a { font-size: 10.8vw; } /* "PREGUNTAS" entra justo en el ancho */
   .va-map { border-left: 0; border-top: 2px solid var(--ink); min-height: 360px; }

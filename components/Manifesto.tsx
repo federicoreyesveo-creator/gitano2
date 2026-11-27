@@ -37,15 +37,15 @@ export default function Manifesto() {
       <p className="va-m-phrase">
         <span className="va-m-line">
           {w("Haz")}
-          <img src={CUTS[1].img} alt="" />
+          <img src={CUTS[1].img.replace(".webp", "-480.webp")} alt="" />
         </span>{" "}
         <span className="va-m-line">
-          <img src={CUTS[3].img} alt="" />{" "}
+          <img src={CUTS[3].img.replace(".webp", "-480.webp")} alt="" />{" "}
           {w("tuyo")}
         </span>{" "}
         <span className="va-m-line">
           {w("tu")}
-          <img src={CUTS[5].img} alt="" />{" "}
+          <img src={CUTS[5].img.replace(".webp", "-480.webp")} alt="" />{" "}
           {w("estilo.")}
         </span>
       </p>

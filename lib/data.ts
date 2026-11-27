@@ -20,6 +20,12 @@ export const ADDRESS = {
 const OBRA: Record<number, string> = {"1": "fade-con-textura-barberia-merida", "2": "mullet-con-barba-barberia-merida", "3": "taper-rizado-con-barba-barberia-merida", "4": "high-fade-con-barba-barberia-merida", "5": "crop-texturizado-barberia-merida", "6": "afro-esculpido-corte-mujer-merida"};
 const obra = (n: number) => `/img/obra/${OBRA[n]}.webp`;
 
+/** Cada foto existe en 480, 900 y su tamaño original (archivo sin sufijo): el navegador baja la que le alcanza. */
+export const srcSet = (src: string, w: number) =>
+  `${src.replace(".webp", "-480.webp")} 480w, ${src.replace(".webp", "-900.webp")} 900w, ${src} ${w}w`;
+export const OBRA_W = 1328;
+export const OBRA_H = 1760;
+
 // Frase que define la marca: idéntica en el sitio, Google Business Profile, Fresha e Instagram.
 export const ENTITY = "Gitano Studio es una barbería de autor en Mérida, Yucatán, fundada por el barbero Dayner, en la Calle 31, Circuito Colonias, colonia México Oriente.";
 
@@ -95,20 +101,21 @@ export const FAQS: Faq[] = [
 ];
 
 // Los mismos 6 cortes de la v1, ahora a color y sin numeración.
-export type Cut = { name: string; technique: string; time: string; line: string; img: string; alt: string };
+// pos: encuadre de la foto en los paneles (por defecto 50% 30%); más bajo el %, más se ve la parte de arriba del pelo.
+export type Cut = { name: string; technique: string; time: string; line: string; img: string; alt: string; pos?: string };
 export const CUTS: Cut[] = [
   { name: "Mullet + barba", technique: "Tijera + navaja", time: "60 min", line: "Corto adelante, actitud atrás. Con la barba a juego.", img: obra(2), alt: "Mullet con barba trabajado a tijera y navaja en Gitano Studio, Mérida, Yucatán" },
-  { name: "Fade con textura", technique: "Máquina + tijera", time: "45 min", line: "Degradado limpio abajo, movimiento arriba. El que nunca falla.", img: obra(1), alt: "Fade con textura hecho con máquina y tijera en Gitano Studio, barbería en Mérida" },
-  { name: "Taper rizado", technique: "Rizo natural + barba", time: "60 min", line: "Tu rizo se respeta: laterales limpios y la forma natural intacta.", img: obra(3), alt: "Taper en cabello rizado natural con barba, Gitano Studio Mérida" },
+  { name: "Fade con textura", technique: "Máquina + tijera", time: "45 min", line: "Degradado limpio abajo, movimiento arriba. El que nunca falla.", img: obra(1), alt: "Fade con textura hecho con máquina y tijera en Gitano Studio, barbería en Mérida", pos: "50% 6%" },
+  { name: "Taper rizado", technique: "Rizo natural + barba", time: "60 min", line: "Tu rizo se respeta: laterales limpios y la forma natural intacta.", img: obra(3), alt: "Taper en cabello rizado natural con barba, Gitano Studio Mérida", pos: "50% 6%" },
   { name: "High fade + barba", technique: "Perfilado a navaja", time: "60 min", line: "Fade alto y barba marcada a navaja. Líneas que se notan desde la otra banqueta.", img: obra(4), alt: "High fade con barba perfilada a navaja en una barbería de Mérida" },
   { name: "Crop texturizado", technique: "Fade + textura arriba", time: "45 min", line: "Corto, con textura y casi cero mantenimiento. Te levantas y ya quedó.", img: obra(5), alt: "Crop texturizado con fade, corte de hombre en Gitano Studio" },
   { name: "Afro esculpido", technique: "Tijera · corte de mujer", time: "60 min", line: "Volumen con forma. Corte corto de mujer trabajado a tijera, mechón por mechón.", img: obra(6), alt: "Afro esculpido, corte corto de mujer a tijera en Gitano Studio, Mérida" },
 ];
 
 // Foto de portada a color (el mullet) y fotos del estudio a color.
-export const COVER = { img: obra(2), w: 1200, h: 1600, alt: "Mullet con barba trabajado a tijera y navaja en Gitano Studio, Mérida, Yucatán" };
+export const COVER = { img: obra(2), w: 1328, h: 1760, alt: "Mullet con barba trabajado a tijera y navaja en Gitano Studio, Mérida, Yucatán" };
 export const COLOR = {
-  dayner: { img: "/img/color/dayner-barbero-gitano-studio-merida-retrato.webp", w: 1000, h: 1250, alt: "Retrato de Dayner, barbero y fundador de Gitano Studio" },
+  dayner: { img: "/img/color/dayner-barbero-gitano-studio-merida-retrato.webp", w: 1673, h: 2091, alt: "Retrato de Dayner, barbero y fundador de Gitano Studio" },
   sign: { img: "/img/color/gitano-studio-letrero-fachada-merida-color.webp", w: 618, h: 742, alt: "Dayner colgando el letrero de Gitano Studio en la fachada" },
   studio: { img: "/img/color/gitano-studio-barberia-interior-merida-color.webp", w: 1400, h: 1400, alt: "Interior de Gitano Studio: sillones de barbero y sala de espera en Calle 31, Mérida" },
 };

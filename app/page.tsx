@@ -10,7 +10,7 @@ import Author from "@/components/Author";
 import Band from "@/components/Band";
 import Reviews from "@/components/Reviews";
 import { ArrowOut } from "@/components/ArrowOut";
-import { ADDRESS, ENTITY, FAQS, FRESHA_URL, HOURS, INSTAGRAM_URL, MAPS_EMBED, MAPS_URL, SERVICES, WHATSAPP_URL } from "@/lib/data";
+import { ADDRESS, FAQS, FRESHA_URL, HOURS, INSTAGRAM_URL, MAPS_EMBED, MAPS_URL, SERVICES, WHATSAPP_URL } from "@/lib/data";
 import { businessLd, faqLd } from "@/lib/seo";
 
 /*
@@ -178,7 +178,7 @@ export default function Home() {
           <span>Gitano</span> <span>Studio</span>
         </p>
         <div className="va-foot-row">
-          <p className="va-foot-entity">{ENTITY}</p>
+          <p className="va-foot-entity">Haz tuyo tu estilo.</p>
           <p>
             © 2026 ·{" "}
             <a href="https://www.almabruta.studio" target="_blank" rel="noopener">
