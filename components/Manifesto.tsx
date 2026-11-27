@@ -16,7 +16,8 @@ export default function Manifesto() {
     if (reducedMotion()) return;
     const ctx = gsap.context(() => {
       const st = { trigger: root.current, start: "top 75%", end: "bottom 70%", scrub: 0.5 };
-      gsap.fromTo(".va-m-w", { opacity: 0.12 }, { opacity: 1, stagger: 0.1, ease: "none", scrollTrigger: st });
+      // Arrancan invisibles (no "fantasma"): así ninguna palabra queda con contraste bajo mientras espera su turno.
+      gsap.fromTo(".va-m-w", { opacity: 0 }, { opacity: 1, stagger: 0.1, ease: "none", scrollTrigger: st });
       gsap.fromTo(".va-manifesto img", { scale: 0, rotate: -12 }, { scale: 1, rotate: 0, stagger: 0.3, ease: "back.out(2)", scrollTrigger: st });
     }, root);
     return () => ctx.revert();
