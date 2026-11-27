@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import "./site.css";
 import Motion from "@/components/Motion";
 import Dock from "@/components/Dock";
@@ -10,7 +11,7 @@ import Author from "@/components/Author";
 import Band from "@/components/Band";
 import Reviews from "@/components/Reviews";
 import { ArrowOut } from "@/components/ArrowOut";
-import { ADDRESS, FAQS, BOOK_LINK, HOURS, INSTAGRAM_URL, MAPS_EMBED, MAPS_URL, SERVICES, WHATSAPP_URL } from "@/lib/data";
+import { ADDRESS, FAQS, BOOK_LINK, HOURS, INSTAGRAM_URL, MAPS_EMBED, MAPS_URL, SERVICES, SITE_URL, WHATSAPP_URL, COVER } from "@/lib/data";
 import { businessLd, faqLd } from "@/lib/seo";
 
 /*
@@ -24,7 +25,9 @@ const DAYS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "
 const ORDER = [2, 3, 4, 5, 6, 0, 1];
 const fmt = (h: number) => `${Math.floor(h)}:${h % 1 ? "30" : "00"}`;
 const d = (s: number) => ({ ["--d" as string]: `${s}s` });
-const jsonLd = businessLd();
+const jsonLd = businessLd({ url: SITE_URL, image: `${SITE_URL}${COVER.img}`, logo: `${SITE_URL}/icon.png` });
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default function Home() {
   return (
@@ -157,7 +160,7 @@ export default function Home() {
             </p>
           </div>
           <a className="va-foot-mark" href="#inicio" aria-label="Volver al inicio">
-            <img src="/img/carita.png" alt="" width={684} height={642} />
+            <img src="/img/carita.webp" alt="" width={684} height={642} loading="lazy" />
           </a>
           <div className="va-foot-col va-foot-col-r">
             <p className="va-foot-label">Contacto</p>

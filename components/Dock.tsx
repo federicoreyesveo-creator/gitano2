@@ -38,7 +38,7 @@ export default function Dock() {
           ))}
         </nav>
         <div className="va-menu-foot">
-          <img className="va-logo" src="/img/carita.png" alt="" width={684} height={642} />
+          <img className="va-logo" src="/img/carita.webp" alt="" width={684} height={642} loading="lazy" />
           <span>{ADDRESS.line1} · Mérida, Yuc.</span>
           <Social tabIndex={open ? 0 : -1} />
         </div>
@@ -51,7 +51,7 @@ export default function Dock() {
         <a {...BOOK_LINK} className="is-main">
           Agendar
         </a>
-        <a href={WHATSAPP_URL} target="_blank" rel="noopener" aria-label="WhatsApp">
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener" aria-label="Whats: escríbenos por WhatsApp">
           Whats
         </a>
       </nav>

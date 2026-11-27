@@ -112,8 +112,8 @@ export default function Loader() {
                 />
               ))}
             </mask>
-            <image href="/img/carita.png" width={CARITA.w} height={CARITA.h} mask="url(#va-carita-pen)" />
-            <image className="va-loader-full" href="/img/carita.png" width={CARITA.w} height={CARITA.h} />
+            <image href="/img/carita.webp" width={CARITA.w} height={CARITA.h} mask="url(#va-carita-pen)" />
+            <image className="va-loader-full" href="/img/carita.webp" width={CARITA.w} height={CARITA.h} />
           </svg>
         </div>
         <div className="va-loader-bar">

@@ -45,7 +45,7 @@
 .va-m-phrase { font-size: clamp(40px, 8vw, 150px); line-height: .92; }
 .va-manifesto img { display: inline-block; height: .78em; width: 1.25em; object-fit: cover; vertical-align: -.06em; border-radius: 0; margin: 0 .05em; }
 .va-m-w { display: inline; }
-.va-m-w { color: var(--accent); }
+.va-m-w { color: #808080; } /* gris más claro que el acento: contraste 4.6:1 sobre la tinta */
 .va-m-w.is-key { color: var(--bg); }
 
 /* Cortes */
@@ -172,7 +172,7 @@
 .va-svc-group li { transition: background .25s, color .25s, padding .35s cubic-bezier(.2,.7,.2,1); }
 .va-svc-group li:hover { background: var(--ink); color: var(--bg); padding-left: 12px; padding-right: 12px; }
 .va-svc-group li:hover small { color: var(--grey); }
-.va-svc-foot { margin-top: 26px; font-size: 14px; color: var(--soft-l); }
+.va-svc-foot { margin-top: 26px; font-size: 14px; color: rgba(233,231,226,.92); }
 .va-link { display: inline-block; margin-top: 24px; font-family: var(--f-archivo); font-weight: 800; font-stretch: 110%; text-transform: uppercase; border-bottom: 2px solid var(--ink); }
 
 /* Menú a pantalla completa */

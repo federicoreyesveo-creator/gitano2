@@ -26,7 +26,7 @@ export default function Cuts() {
           const open = i === on;
           return (
             <div key={c.name} className={`va-panel ${open ? "is-on" : ""}`} onMouseEnter={() => setOn(i)}>
-              <img src={c.img} srcSet={srcSet(c.img, OBRA_W)} sizes="(max-width: 900px) 100vw, 45vw" alt={c.alt} width={OBRA_W} height={OBRA_H} style={c.pos ? { objectPosition: c.pos } : undefined} />
+              <img src={c.img} srcSet={srcSet(c.img, OBRA_W)} sizes="(max-width: 900px) 100vw, 45vw" alt={c.alt} width={OBRA_W} height={OBRA_H} loading="lazy" decoding="async" style={c.pos ? { objectPosition: c.pos } : undefined} />
               <button type="button" className="va-panel-hit" aria-expanded={open} aria-label={c.name} onClick={() => setOn(i)} onFocus={() => setOn(i)} />
               <span className="va-panel-tab" aria-hidden>
                 {c.name}

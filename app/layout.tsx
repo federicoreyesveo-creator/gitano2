@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Archivo, Geist, Geist_Mono } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
+import { SITE_URL } from "@/lib/data";
 
 // v2 · "Bloque": titulares en Archivo expandida (sans pesada y ancha), textos en Geist.
 const sans = Geist({ subsets: ["latin"], variable: "--f-sans" });
@@ -9,6 +10,7 @@ const mono = Geist_Mono({ subsets: ["latin"], variable: "--f-mono" });
 const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--f-archivo" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Barbería en Mérida | Gitano Studio · Cortes de autor",
   description:
     "Barbería de autor en Mérida. Fades, corte a tijera, barba con toalla caliente y cortes cortos de mujer con Dayner. México Oriente. Agenda en línea.",
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Gitano Studio",
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {

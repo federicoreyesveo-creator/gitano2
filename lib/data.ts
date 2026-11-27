@@ -8,6 +8,9 @@ const OWN_BOOKING = process.env.NEXT_PUBLIC_RESERVAS === "on";
 export const BOOK_URL = OWN_BOOKING ? "/reservar" : FRESHA_URL;
 /** Props del link de agendar: la agenda propia abre en la misma pestaña, Fresha en otra. */
 export const BOOK_LINK = OWN_BOOKING ? { href: BOOK_URL } : { href: BOOK_URL, target: "_blank", rel: "noopener" };
+// Dirección pública del sitio (canonical, sitemap, schema, og:image). Cuando esté el dominio final,
+// se define NEXT_PUBLIC_SITE_URL en el build y todo pasa a apuntar ahí.
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://gitano2.vercel.app").replace(/\/$/, "");
 export const INSTAGRAM_URL = "https://www.instagram.com/gitano.studio/";
 export const PHONE = "999 453 3474";
 export const WHATSAPP_URL = "https://wa.me/529994533474";
@@ -127,6 +130,7 @@ export const COVER = {
   w: 5504,
   h: 3072,
   mobile: [720, 1080, 1440].map((w) => `${PORTADA}-vertical-${w}.webp ${w}w`).join(", "),
+  mobileImg: `${PORTADA}-vertical-1080.webp`,
   alt: "Mullet con barba y degradado trabajado a tijera y navaja en Gitano Studio, Mérida, Yucatán",
 };
 export const COLOR = {

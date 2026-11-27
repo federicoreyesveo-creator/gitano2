@@ -26,7 +26,7 @@ export default function NavLogo() {
 
   return (
     <a ref={ref} href="#inicio" className="va-navlogo" aria-label="Gitano Studio, volver al inicio">
-      <img src="/img/carita.png" alt="" width={684} height={642} />
+      <img src="/img/carita.webp" alt="" width={684} height={642} />
     </a>
   );
 }

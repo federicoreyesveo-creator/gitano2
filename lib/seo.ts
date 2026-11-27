@@ -1,7 +1,7 @@
 import { ADDRESS, PHONE, FAQS, FRESHA_URL, GEO, HOURS, INSTAGRAM_URL, MAPS_URL, SERVICES } from "./data";
 
 // Datos estructurados (schema.org). HairSalon es el tipo que corresponde a una barbería.
-// TODO: sumar url cuando esté el dominio final.
+// url, imagen y logo salen de SITE_URL (lib/data.ts).
 
 const DAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const hhmm = (h: number) => `${String(Math.floor(h)).padStart(2, "0")}:${h % 1 ? "30" : "00"}`;
@@ -25,7 +25,7 @@ function openingHours() {
   }));
 }
 
-export function businessLd(opts: { url?: string; image?: string } = {}) {
+export function businessLd(opts: { url?: string; image?: string; logo?: string } = {}) {
   return {
     "@context": "https://schema.org",
     "@type": "HairSalon",
@@ -34,6 +34,7 @@ export function businessLd(opts: { url?: string; image?: string } = {}) {
       "Barbería de autor en Mérida, Yucatán, fundada por el barbero Dayner. Fades, corte a tijera, barba con toalla caliente y cortes cortos de mujer.",
     ...(opts.url && { url: opts.url }),
     ...(opts.image && { image: opts.image }),
+    ...(opts.logo && { logo: opts.logo }),
     priceRange: "$80–$650 MXN",
     address: {
       "@type": "PostalAddress",

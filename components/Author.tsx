@@ -42,7 +42,7 @@ export default function Author() {
     <section ref={root} className="va-author" id="dayner">
       <div className="va-author-stage">
         <figure className="va-author-portrait">
-          <img src={COLOR.dayner.img} srcSet={srcSet(COLOR.dayner.img, COLOR.dayner.w)} sizes="(max-width: 900px) 70vw, 30vw" alt={COLOR.dayner.alt} width={COLOR.dayner.w} height={COLOR.dayner.h} />
+          <img src={COLOR.dayner.img} srcSet={srcSet(COLOR.dayner.img, COLOR.dayner.w)} sizes="(max-width: 900px) 70vw, 30vw" alt={COLOR.dayner.alt} width={COLOR.dayner.w} height={COLOR.dayner.h} loading="lazy" decoding="async" />
           {/* Sello giratorio: el texto ocupa justo la circunferencia (2π·78 ≈ 490) para que no se pise */}
           <svg className="va-badge" viewBox="0 0 200 200" aria-hidden>
             <defs>

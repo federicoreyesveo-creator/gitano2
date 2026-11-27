@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { preload } from "react-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { COVER } from "@/lib/data";
@@ -16,6 +17,10 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
+  // La portada está dentro de <picture>, que React no precarga solo: la pedimos primero y con prioridad alta,
+  // una versión por pantalla para no bajar la horizontal en el celular.
+  preload(COVER.img, { as: "image", fetchPriority: "high", imageSrcSet: COVER.srcSet, imageSizes: "(max-aspect-ratio: 16/9) 178vh, 100vw", media: "(min-width: 901px)" });
+  preload(COVER.mobileImg, { as: "image", fetchPriority: "high", imageSrcSet: COVER.mobile, imageSizes: "120vw", media: "(max-width: 900px)" });
 
   useEffect(() => {
     const el = root.current!;
