@@ -200,13 +200,13 @@
 @media (max-width: 760px) { .va-navlogo { top: 12px; width: 50px; } }
 
 /* Pantalla de carga: la carita entra, cabecea y la barra se llena; después el telón sube */
-.va-loader { position: fixed; inset: 0; z-index: 100; background: var(--ink); display: grid; place-items: center; animation: va-loader-safety .4s 7s forwards; }
+.va-loader { position: fixed; inset: 0; z-index: 100; background: var(--ink); display: grid; place-items: center; animation: va-loader-safety .4s 4s forwards; }
 .va-loader-in { display: grid; justify-items: center; gap: 28px; }
-.va-loader-face { width: clamp(120px, 13vw, 180px); animation: va-face-nod 1.3s 2.1s ease-in-out infinite; transform-origin: 50% 85%; }
+.va-loader-face { width: clamp(120px, 13vw, 180px); animation: va-face-nod 1.3s 1.2s ease-in-out infinite; transform-origin: 50% 85%; }
 .va-loader-face svg { display: block; width: 100%; height: auto; overflow: visible; }
 .va-loader-face mask path { fill: none; stroke: #fff; stroke-width: 36; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1; stroke-dashoffset: 1; opacity: 0; animation: va-pen .3s linear forwards; }
 /* opacity 0 hasta su turno: si no, la punta redonda de cada trazo asoma como un puntito antes de tiempo */
-.va-loader-full { opacity: 0; animation: va-fade .25s 2.05s forwards; } /* asegura el dibujo completo al final */
+.va-loader-full { opacity: 0; animation: va-fade .25s 1.2s forwards; } /* asegura el dibujo completo al final */
 .va-loader-bar { width: clamp(120px, 12vw, 170px); height: 2px; background: var(--line-l); overflow: hidden; }
 .va-loader-bar i { display: block; height: 100%; width: 100%; background: var(--bg); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
 .va-loader-word { font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: .02em; font-size: 12px; color: var(--grey); }

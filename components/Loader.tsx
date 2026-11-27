@@ -20,15 +20,15 @@ export function onReady(fn: () => void) {
   return () => window.removeEventListener("va:ready", fn);
 }
 
-const DRAW_DELAY = 0.15; // el lápiz arranca un toque después de que aparece la pantalla
-const DRAW_S = 1.9; // lo que tarda el lápiz en recorrer toda la carita, a velocidad pareja
+const DRAW_DELAY = 0.1; // el lápiz arranca un toque después de que aparece la pantalla
+const DRAW_S = 1.1; // lo que tarda el lápiz en recorrer toda la carita, a velocidad pareja
 const DRAW_END_MS = (DRAW_DELAY + DRAW_S) * 1000; // la barra y el dibujo terminan juntos acá
 
 /**
  * Pantalla de carga con la carita: un solo lápiz la recorre entera, como una viborita, y cabecea (CSS, así se ve antes de que cargue JS)
  * mientras la barra avanza a la par del lápiz (y espera a la carga real si viene más lenta: fotos de arriba + tipografías).
  * Al terminar, la carita se achica, el telón sube y arranca la portada.
- * Si algo falla, el CSS la esconde solo a los 7 s.
+ * Si algo falla, el CSS la esconde solo a los 4 s.
  */
 export default function Loader() {
   const root = useRef<HTMLDivElement>(null);
@@ -44,7 +44,7 @@ export default function Loader() {
     // así que la barra lee el tiempo de esa misma animación en vez de contar desde acá.
     const pen = el.querySelector("mask path")?.getAnimations()[0];
     const t0 = performance.now() - (typeof pen?.currentTime === "number" ? pen.currentTime : 0);
-    const imgs = Array.from(document.querySelectorAll<HTMLImageElement>(".va-hero img, .va-manifesto img"));
+    const imgs = Array.from(document.querySelectorAll<HTMLImageElement>(".va-hero img"));
     const tasks: Promise<unknown>[] = [
       document.fonts.ready,
       ...imgs.map((im) => (im.complete ? Promise.resolve() : new Promise((r) => { im.addEventListener("load", r, { once: true }); im.addEventListener("error", r, { once: true }); }))),
@@ -81,11 +81,11 @@ export default function Loader() {
         window.dispatchEvent(new Event("va:ready"));
       };
       gsap
-        .timeline({ delay: 0.35, onComplete: () => setGone(true) })
+        .timeline({ delay: 0.15, onComplete: () => setGone(true) })
         // Se va para atrás: arranca lento y de golpe se achica y desaparece.
-        .to(el.querySelector(".va-loader-in"), { scale: 0.3, opacity: 0, duration: 0.75, ease: "expo.in" })
-        .to(el, { clipPath: "inset(0 0 100% 0)", duration: 0.9, ease: "expo.inOut" }, "-=0.08")
-        .call(finish, [], "-=0.55"); // la portada arranca mientras el telón sube
+        .to(el.querySelector(".va-loader-in"), { scale: 0.3, opacity: 0, duration: 0.45, ease: "expo.in" })
+        .to(el, { clipPath: "inset(0 0 100% 0)", duration: 0.65, ease: "expo.inOut" }, "-=0.05")
+        .call(finish, [], "-=0.4"); // la portada arranca mientras el telón sube
     });
 
     return () => {
