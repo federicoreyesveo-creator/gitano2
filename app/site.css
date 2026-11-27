@@ -25,10 +25,10 @@
 /* Portada: la foto arranca del tamaño del marco del centro (Hero.tsx lo mide desde .va-frame)
    y al bajar crece hasta la pantalla completa. 100lvh: cubre lo que libera la barra del iPhone. */
 .va-hero { position: relative; height: 100svh; height: 100lvh; min-height: 560px; overflow: hidden; background: var(--bg); }
-/* La caja de la foto crece (no se recorta): así en el marco se ve el retrato entero. */
-.va-photo { --t: 30%; --r: 40%; --b: 30%; --l: 40%; position: absolute; top: var(--t); right: var(--r); bottom: var(--b); left: var(--l); z-index: 1; overflow: hidden; }
+/* Hero.tsx mueve el recorte (clip-path) y la foto (transform): nada cambia de tamaño mientras se hace scroll, así no tiembla. */
+.va-photo { position: absolute; inset: 0; z-index: 1; overflow: hidden; clip-path: inset(30% 40% 30% 40%); }
 .va-photo picture { display: contents; }
-.va-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 52% 40%; }
+.va-photo img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: 52% 40%; transform-origin: 50% 50%; will-change: transform; }
 .va-photo-shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(26,28,31,0) 60%, rgba(26,28,31,.55)); opacity: 0; pointer-events: none; }
 .va-frame { position: absolute; left: 50%; top: calc(100svh / 2); transform: translate(-50%, -50%); width: clamp(200px, 21vw, 380px); aspect-ratio: 3 / 4; visibility: hidden; }
 .va-word { position: absolute; left: var(--g); top: 64px; z-index: 2; font-size: clamp(64px, 15vw, 260px); line-height: .8; overflow: hidden; padding-bottom: .04em; }
