@@ -119,7 +119,16 @@ export const CUTS: Cut[] = [
 ];
 
 // Foto de portada a color (el mullet) y fotos del estudio a color.
-export const COVER = { img: obra(2), w: 1328, h: 1760, alt: "Mullet con barba trabajado a tijera y navaja en Gitano Studio, Mérida, Yucatán" };
+// Portada en 4K: horizontal para escritorio (1280→3840) y un recorte vertical 3:4 centrado en la cabeza para celular.
+const PORTADA = "/img/portada/mullet-con-barba-gitano-studio-barberia-merida";
+export const COVER = {
+  img: `${PORTADA}-1920.webp`,
+  srcSet: [1280, 1920, 2560, 3840].map((w) => `${PORTADA}-${w}.webp ${w}w`).join(", "),
+  w: 5504,
+  h: 3072,
+  mobile: [720, 1080, 1440].map((w) => `${PORTADA}-vertical-${w}.webp ${w}w`).join(", "),
+  alt: "Mullet con barba y degradado trabajado a tijera y navaja en Gitano Studio, Mérida, Yucatán",
+};
 export const COLOR = {
   dayner: { img: "/img/color/dayner-barbero-gitano-studio-merida-retrato.webp", w: 1673, h: 2091, alt: "Retrato de Dayner, barbero y fundador de Gitano Studio" },
   sign: { img: "/img/color/gitano-studio-letrero-fachada-merida-color.webp", w: 618, h: 742, alt: "Dayner colgando el letrero de Gitano Studio en la fachada" },

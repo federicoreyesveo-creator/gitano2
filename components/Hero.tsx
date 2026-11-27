@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { COVER, srcSet } from "@/lib/data";
+import { COVER } from "@/lib/data";
 import { reducedMotion } from "./Motion";
 import { onReady } from "./Loader";
 
@@ -89,7 +89,11 @@ export default function Hero() {
   return (
     <header ref={root} className="va-hero" id="inicio">
       <div className="va-photo">
-        <img src={COVER.img} srcSet={srcSet(COVER.img, COVER.w)} sizes="100vw" alt={COVER.alt} width={COVER.w} height={COVER.h} fetchPriority="high" />
+        <picture>
+          {/* Celular: el recuadro final es vertical, así que baja el recorte vertical (mucho más liviano que la horizontal en 4K) */}
+          <source media="(max-width: 900px)" srcSet={COVER.mobile} sizes="120vw" />
+          <img src={COVER.img} srcSet={COVER.srcSet} sizes="(max-aspect-ratio: 16/9) 178vh, 100vw" alt={COVER.alt} width={COVER.w} height={COVER.h} fetchPriority="high" />
+        </picture>
       </div>
       <div className="va-photo-shade" />
       <div className="va-frame" aria-hidden />
