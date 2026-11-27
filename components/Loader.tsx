@@ -20,12 +20,13 @@ export function onReady(fn: () => void) {
   return () => window.removeEventListener("va:ready", fn);
 }
 
+const DRAW_DELAY = 0.15; // el lápiz arranca un toque después de que aparece la pantalla
 const DRAW_S = 1.9; // lo que tarda el lápiz en recorrer toda la carita, a velocidad pareja
-const MIN_MS = 2600; // que la carita llegue a dibujarse y cabecear aunque la página cargue al instante
+const DRAW_END_MS = (DRAW_DELAY + DRAW_S) * 1000; // la barra y el dibujo terminan juntos acá
 
 /**
  * Pantalla de carga con la carita: un solo lápiz la recorre entera, como una viborita, y cabecea (CSS, así se ve antes de que cargue JS)
- * mientras la barra avanza con la carga real (fotos de arriba + tipografías).
+ * mientras la barra avanza a la par del lápiz (y espera a la carga real si viene más lenta: fotos de arriba + tipografías).
  * Al terminar, la carita se achica, el telón sube y arranca la portada.
  * Si algo falla, el CSS la esconde solo a los 7 s.
  */
@@ -39,22 +40,41 @@ export default function Loader() {
     html.classList.add("no-scroll");
     window.scrollTo(0, 0);
 
-    const t0 = performance.now();
+    // Reloj del lápiz: el dibujo es CSS y arranca apenas se pinta la página (antes que este JS),
+    // así que la barra lee el tiempo de esa misma animación en vez de contar desde acá.
+    const pen = el.querySelector("mask path")?.getAnimations()[0];
+    const t0 = performance.now() - (typeof pen?.currentTime === "number" ? pen.currentTime : 0);
     const imgs = Array.from(document.querySelectorAll<HTMLImageElement>(".va-hero img, .va-manifesto img"));
     const tasks: Promise<unknown>[] = [
       document.fonts.ready,
       ...imgs.map((im) => (im.complete ? Promise.resolve() : new Promise((r) => { im.addEventListener("load", r, { once: true }); im.addEventListener("error", r, { once: true }); }))),
     ];
     let done = 0;
-    const setP = (p: number) => el.style.setProperty("--p", String(p));
-    tasks.forEach((t) => t.then(() => setP(Math.min(0.9, (++done / tasks.length) * 0.9))));
+    tasks.forEach((t) => t.then(() => done++));
+
+    // La barra va a la par del lápiz: llega al final justo cuando termina de dibujarse la carita.
+    // Si la carga viene más lenta, la barra espera a la carga (nunca se adelanta a ninguna de las dos).
+    let shown = 0;
+    const tick = () => {
+      const s = (performance.now() - t0) / 1000;
+      const draw = Math.min(1, Math.max(0, (s - DRAW_DELAY) / DRAW_S));
+      const target = Math.min(draw, done / tasks.length);
+      // sigue al lápiz casi pegada; si la carga la frenó y después se pone al día, el salto se suaviza
+      shown += (target - shown) * 0.35;
+      if (target - shown < 0.003) shown = target;
+      el.style.setProperty("--p", shown.toFixed(4));
+    };
+    gsap.ticker.add(tick);
 
     let alive = true;
     Promise.all(tasks).then(async () => {
-      const wait = MIN_MS - (performance.now() - t0);
+      const wait = DRAW_END_MS - (performance.now() - t0);
       if (wait > 0) await new Promise((r) => setTimeout(r, wait));
       if (!alive) return;
-      setP(1);
+      // si la carga terminó después del dibujo, deja que la barra termine de llenarse
+      await new Promise<void>((r) => { const chk = () => { if (shown >= 1 || !alive) { gsap.ticker.remove(chk); r(); } }; gsap.ticker.add(chk); });
+      gsap.ticker.remove(tick);
+      if (!alive) return;
       const finish = () => {
         html.classList.remove("no-scroll");
         window.__vaReady = true;
@@ -70,6 +90,7 @@ export default function Loader() {
 
     return () => {
       alive = false;
+      gsap.ticker.remove(tick);
       html.classList.remove("no-scroll");
     };
   }, []);
@@ -87,7 +108,7 @@ export default function Loader() {
                   key={i}
                   d={p.d}
                   pathLength={1}
-                  style={{ animationDelay: `${(0.15 + p.t0 * DRAW_S).toFixed(3)}s`, animationDuration: `${Math.max(p.dt * DRAW_S, 0.004).toFixed(3)}s` }}
+                  style={{ animationDelay: `${(DRAW_DELAY + p.t0 * DRAW_S).toFixed(3)}s`, animationDuration: `${Math.max(p.dt * DRAW_S, 0.004).toFixed(3)}s` }}
                 />
               ))}
             </mask>

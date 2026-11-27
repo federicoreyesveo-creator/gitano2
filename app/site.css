@@ -207,7 +207,7 @@
 /* opacity 0 hasta su turno: si no, la punta redonda de cada trazo asoma como un puntito antes de tiempo */
 .va-loader-full { opacity: 0; animation: va-fade .25s 2.05s forwards; } /* asegura el dibujo completo al final */
 .va-loader-bar { width: clamp(120px, 12vw, 170px); height: 2px; background: var(--line-l); overflow: hidden; }
-.va-loader-bar i { display: block; height: 100%; width: 100%; background: var(--bg); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); transition: transform .35s ease; }
+.va-loader-bar i { display: block; height: 100%; width: 100%; background: var(--bg); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
 .va-loader-word { font-family: var(--f-archivo); font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: .02em; font-size: 12px; color: var(--grey); }
 @keyframes va-pen { from { opacity: 1; } to { stroke-dashoffset: 0; opacity: 1; } }
 @keyframes va-fade { to { opacity: 1; } }
