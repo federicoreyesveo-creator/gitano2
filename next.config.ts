@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Hay otro package-lock.json en la carpeta de Alma Bruta; fijamos la raíz aquí.
   turbopack: { root: __dirname },
+  // El CSS va dentro del HTML: el primer pintado no espera a descargar hojas de estilo aparte.
+  experimental: { inlineCss: true },
   // Cabeceras de seguridad básicas (sin CSP para no romper GSAP ni los scripts en línea de Next).
   async headers() {
     return [

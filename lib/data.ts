@@ -129,7 +129,7 @@ export const COVER = {
   srcSet: [1280, 1920, 2560, 3840].map((w) => `${PORTADA}-${w}.webp ${w}w`).join(", "),
   w: 5504,
   h: 3072,
-  mobile: [720, 1080, 1440].map((w) => `${PORTADA}-vertical-${w}.webp ${w}w`).join(", "),
+  mobile: [720, 900, 1080, 1440].map((w) => `${PORTADA}-vertical-${w}.webp ${w}w`).join(", "),
   mobileImg: `${PORTADA}-vertical-1080.webp`,
   alt: "Mullet con barba y degradado trabajado a tijera y navaja en Gitano Studio, Mérida, Yucatán",
 };

@@ -160,7 +160,7 @@ export default function Home() {
             </p>
           </div>
           <a className="va-foot-mark" href="#inicio" aria-label="Volver al inicio">
-            <img src="/img/carita.webp" alt="" width={684} height={642} loading="lazy" />
+            <img src="/img/carita-200.webp" alt="" width={200} height={188} loading="lazy" />
           </a>
           <div className="va-foot-col va-foot-col-r">
             <p className="va-foot-label">Contacto</p>
