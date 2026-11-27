@@ -1,4 +1,4 @@
-import { FRESHA_URL, INSTAGRAM_URL, MAPS_URL, WHATSAPP_URL } from "@/lib/data";
+import { BOOK_URL, INSTAGRAM_URL, MAPS_URL, WHATSAPP_URL } from "@/lib/data";
 
 // Redes y canales del estudio, con ícono. Se usa en el pie y en el menú.
 const ICONS = {
@@ -32,7 +32,7 @@ const ICONS = {
 const LINKS = [
   { href: INSTAGRAM_URL, label: "Instagram", icon: ICONS.instagram },
   { href: WHATSAPP_URL, label: "WhatsApp", icon: ICONS.whatsapp },
-  { href: FRESHA_URL, label: "Agendar", icon: ICONS.book },
+  { href: BOOK_URL, label: "Agendar", icon: ICONS.book },
   { href: MAPS_URL, label: "Google Maps", icon: ICONS.maps },
 ];
 

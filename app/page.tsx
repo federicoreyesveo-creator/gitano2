@@ -10,7 +10,7 @@ import Author from "@/components/Author";
 import Band from "@/components/Band";
 import Reviews from "@/components/Reviews";
 import { ArrowOut } from "@/components/ArrowOut";
-import { ADDRESS, FAQS, FRESHA_URL, HOURS, INSTAGRAM_URL, MAPS_EMBED, MAPS_URL, SERVICES, WHATSAPP_URL } from "@/lib/data";
+import { ADDRESS, FAQS, BOOK_LINK, HOURS, INSTAGRAM_URL, MAPS_EMBED, MAPS_URL, SERVICES, WHATSAPP_URL } from "@/lib/data";
 import { businessLd, faqLd } from "@/lib/seo";
 
 /*
@@ -74,7 +74,7 @@ export default function Home() {
           ))}
           <div className="va-svc-foot">
             <p>Precios en MXN · Pagas en el estudio · Agenda en línea o por WhatsApp.</p>
-            <a className="va-btn" href={FRESHA_URL} target="_blank" rel="noopener">
+            <a className="va-btn" {...BOOK_LINK}>
               Aparta tu lugar&nbsp;→
             </a>
           </div>
@@ -124,7 +124,7 @@ export default function Home() {
               ))}
             </dl>
             <div className="va-visit-actions">
-              <a className="va-btn" href={FRESHA_URL} target="_blank" rel="noopener">
+              <a className="va-btn" {...BOOK_LINK}>
                 Aparta tu lugar&nbsp;→
               </a>
               <a className="va-link" href={MAPS_URL} target="_blank" rel="noopener">
@@ -169,7 +169,7 @@ export default function Home() {
                 <a href={INSTAGRAM_URL} target="_blank" rel="noopener">Instagram @gitano.studio</a>
               </li>
               <li>
-                <a href={FRESHA_URL} target="_blank" rel="noopener">Aparta tu lugar</a>
+                <a {...BOOK_LINK}>Aparta tu lugar</a>
               </li>
             </ul>
           </div>

@@ -1,0 +1,9 @@
+# Copiar como .dev.vars para desarrollo local. En producción van como secretos:
+#   npx wrangler secret put PANEL_PASSWORD
+PANEL_PASSWORD=cambiar-esta-clave
+SESSION_SECRET=una-cadena-larga-y-al-azar
+SITE_URL=http://localhost:3101
+# Opcional: emails con Resend (gratis hasta 3.000/mes). Sin esto, no se mandan emails.
+RESEND_API_KEY=
+MAIL_FROM=Gitano Studio <reservas@tu-dominio.com>
+NOTIFY_EMAIL=

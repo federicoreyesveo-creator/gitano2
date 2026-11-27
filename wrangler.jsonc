@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gitano-studio",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "observability": { "enabled": true },
+  // Base de datos de reservas. Crear con: npx wrangler d1 create gitano-reservas
+  // y pegar aquí el database_id que devuelve.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "gitano-reservas",
+      "database_id": "PEGAR-AQUI-EL-ID-DE-D1",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

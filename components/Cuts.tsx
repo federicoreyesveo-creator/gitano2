@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CUTS, FRESHA_URL, OBRA_H, OBRA_W, srcSet } from "@/lib/data";
+import { BOOK_LINK, CUTS, OBRA_H, OBRA_W, srcSet } from "@/lib/data";
 
 /**
  * Cortes como paneles: las seis fotos en fila, como tiras verticales que ocupan todo el ancho.
@@ -37,7 +37,7 @@ export default function Cuts() {
                   {c.technique} · {c.time}
                 </p>
                 <p className="va-panel-line">{c.line}</p>
-                <a href={FRESHA_URL} target="_blank" rel="noopener" tabIndex={open ? 0 : -1}>
+                <a {...BOOK_LINK} tabIndex={open ? 0 : -1}>
                   Quiero algo&nbsp;así&nbsp;→
                 </a>
               </div>

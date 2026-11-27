@@ -2,6 +2,12 @@
 
 export const FRESHA_URL =
   "https://www.fresha.com/a/gitano-studio-merida-calle-principal-calle-31-circuito-colonias-cogcmbip/booking?menu=true&share=true&pId=3062487";
+// Agenda propia (/reservar, en Cloudflare). Mientras no esté activa en producción, los botones siguen yendo a Fresha.
+// Se prende con la variable NEXT_PUBLIC_RESERVAS=on (en .env.local y en el build de Cloudflare).
+const OWN_BOOKING = process.env.NEXT_PUBLIC_RESERVAS === "on";
+export const BOOK_URL = OWN_BOOKING ? "/reservar" : FRESHA_URL;
+/** Props del link de agendar: la agenda propia abre en la misma pestaña, Fresha en otra. */
+export const BOOK_LINK = OWN_BOOKING ? { href: BOOK_URL } : { href: BOOK_URL, target: "_blank", rel: "noopener" };
 export const INSTAGRAM_URL = "https://www.instagram.com/gitano.studio/";
 export const PHONE = "999 453 3474";
 export const WHATSAPP_URL = "https://wa.me/529994533474";

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -7,3 +8,6 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// Solo en `next dev`: da acceso a la base D1 local (.wrangler/state) y a .dev.vars.
+if (process.env.NODE_ENV === "development") initOpenNextCloudflareForDev();

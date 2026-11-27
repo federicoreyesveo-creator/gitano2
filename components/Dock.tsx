@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ADDRESS, FRESHA_URL, WHATSAPP_URL } from "@/lib/data";
+import { ADDRESS, BOOK_LINK, WHATSAPP_URL } from "@/lib/data";
 import Social from "./Social";
 
 const LINKS = [
@@ -48,7 +48,7 @@ export default function Dock() {
         <button type="button" aria-expanded={open} aria-controls="menu" onClick={() => setOpen((o) => !o)}>
           {open ? "Cerrar" : "Menú"}
         </button>
-        <a href={FRESHA_URL} target="_blank" rel="noopener" className="is-main">
+        <a {...BOOK_LINK} className="is-main">
           Agendar
         </a>
         <a href={WHATSAPP_URL} target="_blank" rel="noopener" aria-label="WhatsApp">
